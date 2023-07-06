@@ -1,0 +1,168 @@
+body{
+    font-family: "Muli", sans-serif;
+    background-image: url("https://img.freepik.com/free-photo/gray-concrete-wall_53876-88973.jpg?w=740&t=st=1688531220~exp=1688531820~hmac=70ef05a9ee6e49afbef732eebfe533fe6a6579e0f2c912d422a32d4f21941f1c");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.form{
+    width: 55vw;
+    margin: auto;
+    border-radius: 10px;
+    padding: 2%;
+    background: rgba( 255, 255, 255, 0.35 );
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    backdrop-filter: blur( 8px );
+    border: 1px solid rgba( 255, 255, 255, 0.18 );
+}
+#reg{
+    font-family: "Space Mono", monospace;
+    font-size: 25px;
+    font-weight: 800;
+    margin: auto;
+    width: 50vw;
+    height: 13vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 10px;
+}
+#profimage{
+    width: 7vw;
+    height: 12vh;
+    border-radius: 50%;
+}
+input[type=text],[type=tel],[type=email], [type=date]{
+    font-family: "Muli", sans-serif;
+    width: 20vw;
+    height: 25px;
+    border-radius: 7px;
+    border: 1px solid grey;
+    background-color: rgb(255, 255, 255);
+}
+#state,#country,#state1,#country1{
+    font-family: "Muli", sans-serif;
+    width: 20.4vw;
+    height: 28px;
+    border-radius: 7px;
+    border: 1px solid grey;
+    background-color: rgb(255, 255, 255);
+}
+legend{
+    font-size: 20px;
+}
+.fieldset{
+    width: 70%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.twoele{
+    width: 50vw;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns:repeat(2,1fr) ;
+    row-gap: 10px;
+}
+#subs{
+    margin-left: 1.2vw;
+}
+input[type=submit]{
+    width: 10vw;
+    border-radius: 5px;
+    border:0.5px solid rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0);
+    height: 5vh;
+    font-family: "Muli", sans-serif;
+    color: rgb(241, 241, 241);
+    font-size: 2.5vh;
+    margin: auto;
+}
+#submit{
+    width: 10vw;
+    margin: auto;
+    margin-top: 20px;
+
+}
+#checkboxaddr{
+    font-size: 12px;
+    color: brown;
+}
+#otherhobby,#otherlang,#msg{
+    display: none;
+}
+
+@media screen and (max-width:800px){
+    .form{
+        width: 80vw;
+        margin: auto;
+        font-size: 15px ;
+        border-radius: 10px;
+        padding: 2%;
+        background: rgba( 255, 255, 255, 0.35 );
+        box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+        backdrop-filter: blur( 8px );
+        border: 1px solid rgba( 255, 255, 255, 0.18 );
+    }
+    #reg{
+        font-family: "Space Mono", monospace;
+        font-size: 25px;
+        font-weight: 800;
+        margin: auto;
+        width: 68vw;
+        height: 9vh;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 10px;
+    }
+    #profimage{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+    }
+    .twoele{
+        width: 68vw;
+        margin: auto;
+        margin-top: 10px;
+        margin-bottom: 20px;
+        display: grid;
+        grid-template-columns:repeat(1,1fr) ;
+        row-gap: 10px;
+    }
+    legend{
+        font-size: 15px ;
+    }
+    input[type=text],[type=tel],[type=email], [type=date]{
+        width: 95%;
+        height: 25px;
+        border-radius: 7px;
+        border: 1px solid grey;
+        background-color: rgb(255, 255, 255);
+    }
+    #state,#country,#state1,#country1{
+        width: 95%;
+        height: 28px;
+        border-radius: 7px;
+        border: 1px solid grey;
+        background-color: rgb(255, 255, 255);
+    }
+    input[type=submit]{
+        width: 20vw;
+        border-radius: 5px;
+        border:0.5px solid rgb(0, 0, 0);
+        background-color: rgb(0, 0, 0);
+        height: 5vh;
+        font-family: "Muli", sans-serif;
+        color: rgb(241, 241, 241);
+        font-size: 2.5vh;
+        margin: auto;
+    }
+    #submit{
+        width: 20vw;
+        margin: auto;
+        margin-top: 20px;
+    
+    }
+}
