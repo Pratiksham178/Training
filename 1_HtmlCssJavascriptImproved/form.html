@@ -46,7 +46,7 @@
               class="mobcode"
               onchange="changeColor('mobcode')"
             ></select> 
-            <input type="tel" id="mob" name="mob"onchange="changeColor('mob')"/>
+            <input type="tel" id="mob" maxlength="10" name="mob"onchange="changeColor('mob')" pattern="[0-9]{10}"/>
             </div>
           </div>
           <div class="eachdiv">
@@ -118,7 +118,7 @@
               name="country"
               id="country"
               class="pcountry"
-              onchange="address();changeColor('country')"
+              onclick="address();changeColor('country')"
             ></select>
           </div>
           <div class="eachdiv">
@@ -168,7 +168,7 @@
           </div>
           <div class="eachdiv">
             <div>Country:<span>*</span></div>
-            <select id="country1" name="country" class="country" onchange="changeColor('country1')"></select>
+            <select id="country1" name="country" class="country" onclick="changeColor('country1')"></select>
           </div>
           <div class="eachdiv">
             <div>State:<span>*</span></div>

@@ -13,7 +13,7 @@ function address(){
     var city=document.getElementById("city").value;
     var code = document.getElementById("pcode").value;
 
-
+    
     if(check.checked==true){
       
       var stateper=document.getElementById("state1");
@@ -32,6 +32,13 @@ function address(){
       newcode.disabled=true;
       newcountry.disabled=true;
       stateper.disabled=true;
+
+      newaddr.style.border="1px solid grey";
+      newaddr2.style.border="1px solid grey";
+      newcity.style.border="1px solid grey";
+      newcode.style.border="1px solid grey";
+      newcountry.style.border="1px solid grey";
+      stateper.style.border="1px solid grey";
 
       
       
@@ -72,6 +79,7 @@ function validate(){
     var cityper = document.getElementById("pcity");
     var pcodeper = document.getElementById("prcode");
     let msg = document.getElementById("msg");
+    msg.innerText="";
     var msg1 = document.createElement("p");
 
     var fname = firstname.value;
@@ -84,19 +92,25 @@ function validate(){
     var flag = 0;
 
     const d = new Date();
-    var year = dob1.slice(0,4);
-    var month = dob1.slice(5,2);
-    var date = dob1.slice(8,2);
-    var yr = d.getFullYear();
-    var mon = d.getMonth();
-    var dt = d.getDate();
+    var year = Number(dob1.slice(0,4));
+    var month = Number(dob1.slice(5,7));
+    var date = Number(dob1.slice(8,10));
+    var yr = Number(d.getFullYear());
+    var mon = Number(d.getMonth());
+    var dt = Number(d.getDate());
+    console.log(date)
+    console.log(dt);
+    console.log(month)
+    console.log(mon);
+    console.log(year)
+    console.log(yr)
 
     //first name validation
     if(fname.trim()===""){
         firstname.style.border="1px solid brown";
         msg1.innerText="Please fill the required field";
         flag=1;
-    }else if(fname.trim() != "/^[A-Za-z]*/"){
+    }else if(fname.trim().match("/^[A-Za-z]+/")){
         firstname.style.border="1px solid brown";
         let msg2 = document.createElement("p")
         msg2.innerText="Enter correct name";
@@ -104,7 +118,7 @@ function validate(){
         flag=1;
     }
     //lastname validation
-    if(lname != "/^[A-Za-z]*/" && lname!=""){
+    if(lname.match("/^[A-Za-z]*/") && lname!=""){
         lastname.style.border="1px solid brown";
         let msg2 = document.createElement("p")
         msg2.innerText="Enter correct name";
@@ -118,7 +132,7 @@ function validate(){
         email.style.border="1px solid brown";
         msg1.innerText="Please fill the required field";
         flag=1;
-    }else if((atPos > 0 && dotPos > atPos + 1 && dotPos < email.length - 1)!=true){
+    }else if((atPos > 0 && dotPos > atPos + 1 && dotPos < mail.length - 1)!=true){
         email.style.border="1px solid brown";
         let msg3 = document.createElement("p")
         msg3.innerText="Enter correct name";
@@ -134,9 +148,8 @@ function validate(){
         dob.style.border="1px solid brown";
         msg1.innerText="Please fill the required field";
         flag=1;
-    }else if(date>=dt || year>=yr || month>=mon){
-        msg1.innerText="Please fill the required field";
-        
+    }else if( yr-year<18){
+        msg1.innerText="You need to be 18 by 01-01-2023";
         flag=1;
     }
     if(profile===""){
