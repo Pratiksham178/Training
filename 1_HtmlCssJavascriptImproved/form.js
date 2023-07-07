@@ -59,7 +59,18 @@ function validate(){
     var mobileno = document.getElementById("mob");
     var dob = document.getElementById("dob");
     var image = document.getElementById("image");
-
+    var addr1 = document.getElementById("line1paddr");
+    var addr2 = document.getElementById("line2paddr");
+    var country = document.getElementById("country");
+    var state = document.getElementById("state");
+    var city = document.getElementById("city");
+    var pcode = document.getElementById("pcode");
+    var addr1per = document.getElementById("line1addr");
+    var addr2per = document.getElementById("line2addr");
+    var countryper = document.getElementById("country1");
+    var stateper = document.getElementById("state1");
+    var cityper = document.getElementById("pcity");
+    var pcodeper = document.getElementById("prcode");
     let msg = document.getElementById("msg");
     var msg1 = document.createElement("p");
 
@@ -80,29 +91,47 @@ function validate(){
     var mon = d.getMonth();
     var dt = d.getDate();
 
-    if(fname==""){
-        firstname.style.border="1px solid red";
+    //first name validation
+    if(fname.trim()===""){
+        firstname.style.border="1px solid brown";
         msg1.innerText="Please fill the required field";
         flag=1;
-    }else if(fname != "/^[A-Za-z]*/"){
-        firstname.style.border="1px solid red";
+    }else if(fname.trim() != "/^[A-Za-z]*/"){
+        firstname.style.border="1px solid brown";
         let msg2 = document.createElement("p")
         msg2.innerText="Enter correct name";
         msg.appendChild(msg2);
         flag=1;
     }
-    if(mail==""){
-        email.style.border="1px solid red";
+    //lastname validation
+    if(lname != "/^[A-Za-z]*/" && lname!=""){
+        lastname.style.border="1px solid brown";
+        let msg2 = document.createElement("p")
+        msg2.innerText="Enter correct name";
+        msg.appendChild(msg2);
+        flag=1;
+    }
+    //mail validation
+    var atPos = mail.indexOf("@");
+    var dotPos = mail.lastIndexOf(".");
+    if(mail===""){
+        email.style.border="1px solid brown";
+        msg1.innerText="Please fill the required field";
+        flag=1;
+    }else if((atPos > 0 && dotPos > atPos + 1 && dotPos < email.length - 1)!=true){
+        email.style.border="1px solid brown";
+        let msg3 = document.createElement("p")
+        msg3.innerText="Enter correct name";
+        msg.appendChild(msg3);
+        flag=1;
+    }
+    if(mob===""){
+        mobileno.style.border="1px solid brown";
         msg1.innerText="Please fill the required field";
         flag=1;
     }
-    if(mob==""){
-        mobileno.style.border="1px solid red";
-        msg1.innerText="Please fill the required field";
-        flag=1;
-    }
-    if(dob1==""){
-        dob.style.border="1px solid red";
+    if(dob1===""){
+        dob.style.border="1px solid brown";
         msg1.innerText="Please fill the required field";
         flag=1;
     }else if(date>=dt || year>=yr || month>=mon){
@@ -110,10 +139,76 @@ function validate(){
         
         flag=1;
     }
-    if(profile==""){
-        image.style.border="1px solid red";
-        msg.innerText="Please fill the required field";
+    if(profile===""){
+        image.style.color="brown";
+        msg1.innerText="Please fill the required field";
         flag=1;
+    }
+
+
+    if(addr1.value===""){
+        addr1.style.border="1px solid brown";
+        msg1.innerText="Please fill the required field";
+        flag=1;
+    }
+    if(addr2.value===""){
+        addr2.style.border="1px solid brown";
+        msg1.innerText="Please fill the required field";
+        flag=1;
+    }
+    if(city.value===""){
+        city.style.border="1px solid brown";
+        msg1.innerText="Please fill the required field";
+        flag=1;
+    }
+    if(country.value==-1){
+        country.style.border="1px solid brown";
+        msg1.innerText="Please fill the required field";
+        flag=1;
+    }
+    if(pcode.value===""){
+        pcode.style.border="1px solid brown";
+        msg1.innerText="Please fill the required field";
+        flag=1;
+    }
+    if(state.value===""){
+        state.style.border="1px solid brown";
+        msg1.innerText="Please fill the required field";
+        flag=1;
+    }
+
+    var check = document.getElementById("checkaddr");
+    if(check.checked!=true){
+        if(addr1per.value===""){
+            addr1per.style.border="1px solid brown";
+            msg1.innerText="Please fill the required field";
+            flag=1;
+        }
+        if(addr2per.value===""){
+            addr2per.style.border="1px solid brown";
+            msg1.innerText="Please fill the required field";
+            flag=1;
+        }
+        if(cityper.value===""){
+            cityper.style.border="1px solid brown";
+            msg1.innerText="Please fill the required field";
+            flag=1;
+        }
+        if(countryper.value==-1){
+            countryper.style.border="1px solid brown";
+            msg1.innerText="Please fill the required field";
+            flag=1;
+        }
+        if(pcodeper.value===""){
+            pcodeper.style.border="1px solid brown";
+            msg1.innerText="Please fill the required field";
+            flag=1;
+        }
+        if(stateper.value===""){
+            stateper.style.border="1px solid brown";
+            msg1.innerText="Please fill the required field";
+            flag=1;
+        }
     }
     if(flag==1){
         msg.appendChild(msg1);
@@ -140,11 +235,13 @@ function addImage(){
     let file = document.getElementById("image");
     let path = URL.createObjectURL(file.files[0]);
     let type = file.files[0].name.split(".").pop();
+    var inc = document.getElementById("incorrectimage");
     console.log(type);
+    file.style.color = "black";
     if(type==="jpg"||type==="jpeg"|| type === "png"){
         document.getElementById("profimage").src=path;
+        inc.innerText="";
     }else{
-        var inc = document.getElementById("incorrectimage");
         inc.innerText="Please upload correct file type";
         file.value ="";
         inc.style.color="brown";
@@ -160,4 +257,9 @@ function handlelang(){
         let hobbies = document.getElementById("otherlang");
         hobbies.style.display="none";
     }
+}
+function changeColor(elementId){
+    box=document.getElementById(elementId);
+    box.style.border = "1px solid grey";
+    
 }

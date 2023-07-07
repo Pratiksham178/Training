@@ -1,6 +1,6 @@
 body{
     font-family: "Muli", sans-serif;
-    background-image: url("https://img.freepik.com/free-photo/gray-concrete-wall_53876-88973.jpg?w=740&t=st=1688531220~exp=1688531820~hmac=70ef05a9ee6e49afbef732eebfe533fe6a6579e0f2c912d422a32d4f21941f1c");
+    background-image: url("https://images.pexels.com/photos/1939485/pexels-photo-1939485.jpeg?auto=compress&cs=tinysrgb&w=600");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -31,13 +31,18 @@ body{
     height: 12vh;
     border-radius: 50%;
 }
-input[type=text],[type=tel],[type=email], [type=date]{
+input[type=text],[type=email], [type=date]{
     font-family: "Muli", sans-serif;
     width: 20vw;
     height: 25px;
     border-radius: 7px;
     border: 1px solid grey;
     background-color: rgb(255, 255, 255);
+}
+#mobile{
+    font-family: "Muli", sans-serif;
+    width: 26vw;
+    height: 25px;
 }
 #state,#country,#state1,#country1{
     font-family: "Muli", sans-serif;
@@ -68,6 +73,9 @@ legend{
 #subs{
     margin-left: 1.2vw;
 }
+.eachdiv{
+    width: 23vw;
+}
 input[type=submit]{
     width: 10vw;
     border-radius: 5px;
@@ -92,8 +100,38 @@ input[type=submit]{
 #otherhobby,#otherlang,#msg{
     display: none;
 }
+span{
+    color:brown;
+}
+input[type=file]{
+    font-family: "Muli",sans-serif;
+}
+input[type="file"]::file-selector-button{
+    font-family: "Muli",sans-serif;
+    color: rgb(58, 57, 57);
+    background-color: rgb(255, 255, 255);
+    border: 1px solid grey;
+    height: 4vh;
+    border-radius: 5px;
+}
+#mobcode{
+    font-family: "Muli", sans-serif;
+    height: 25px;
+    border-radius: 7px;
+    border: 1px solid grey;
+    background-color: rgb(255, 255, 255);
+    width: 4vw;
+}
+input[type=tel]{
+    font-family: "Muli", sans-serif;
+    width:15.4vw;
+    height: 25px;
+    border-radius: 7px;
+    border: 1px solid grey;
+    background-color: rgb(255, 255, 255);
+}
 
-@media screen and (max-width:800px){
+@media screen and (max-width:630px){
     .form{
         width: 80vw;
         margin: auto;
@@ -122,6 +160,14 @@ input[type=submit]{
         height: 60px;
         border-radius: 50%;
     }
+    #mobcode{
+        font-family: "Muli", sans-serif;
+        height: 25px;
+        border-radius: 7px;
+        border: 1px solid grey;
+        background-color: rgb(255, 255, 255);
+        width: 15%;
+    }
     .twoele{
         width: 68vw;
         margin: auto;
@@ -134,12 +180,19 @@ input[type=submit]{
     legend{
         font-size: 15px ;
     }
-    input[type=text],[type=tel],[type=email], [type=date]{
+    input[type=text],[type=email], [type=date]{
         width: 95%;
         height: 25px;
         border-radius: 7px;
         border: 1px solid grey;
         background-color: rgb(255, 255, 255);
+    }
+    #mobile{
+        font-family: "Muli", sans-serif;
+        width: 95%;
+    }
+    input[type=tel]{
+        width: 79%;
     }
     #state,#country,#state1,#country1{
         width: 95%;
@@ -164,5 +217,8 @@ input[type=submit]{
         margin: auto;
         margin-top: 20px;
     
+    }
+    .eachdiv{
+        width: 95%;
     }
 }
