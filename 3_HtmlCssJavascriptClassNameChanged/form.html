@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Space+Mono|Muli"
+    />
+    <link rel="stylesheet" href="./form.css" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <form class="form" onsubmit="return validate()">
+      <div id="registrationFormHeading">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg"
+          id="profimage"
+          alt="image"
+        />
+        <div id="registrationFormText">Registration Form</div>
+      </div>
+      <fieldset class="fieldset">
+        <legend>Personal Information:</legend>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div>First Name:<span>*</span></div>
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+              onchange="changeColor('fname')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Last Name:</div>
+            <input type="text" id="lname" name="lname" />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Email:<span>*</span></div>
+            <input
+              type="email"
+              id="mail"
+              name="mail"
+              onchange="changeColor('mail')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Mobile Number:<span>*</span></div>
+            <div id="mobile">
+              <select
+                name="mobcode"
+                id="mobcode"
+                class="mobcode"
+                onchange="changeColor('mobcode')"
+              ></select>
+              <input
+                type="tel"
+                id="mob"
+                maxlength="10"
+                name="mob"
+                onchange="changeColor('mob')"
+                pattern="[0-9]{10}"
+              />
+            </div>
+          </div>
+          <div class="eachDivInGrid">
+            <div>Gender:<span>*</span></div>
+            <input type="radio" id="male" name="gender" value="male" />
+            <label for="male">Male</label>
+            <input type="radio" id="female" name="gender" value="female" />
+            <label for="female">Female</label>
+          </div>
+          <div class="eachDivInGrid">
+            <div>DOB:<span>*</span></div>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              onchange="changeColor('dob')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Profile Picture:<span>*</span></div>
+            <input type="file" id="image" name="image" onchange="addImage()" />
+            <p id="incorrectimage"></p>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend>Additional Information:</legend>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGridInGrid">
+            <div>Language Known:</div>
+            <input type="checkbox" id="Hindi" />
+            <label for="Hindi">Hindi</label>
+            <input type="checkbox" id="English" />
+            <label for="English">English</label>
+            <input type="checkbox" id="Otherlanguage" onclick="handlelang()" />
+            <label for="Others">Others</label>
+            <input type="text" id="otherlang" />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Hobbies:</div>
+            <input type="checkbox" id="dancing" />
+            <label for="dancing">Dancing</label>
+            <input type="checkbox" id="singing" />
+            <label for="singing">Singing</label>
+            <input type="checkbox" id="Others" onclick="handlehobby()" />
+            <label for="Others">Others</label>
+            <input type="text" id="otherhobby" />
+          </div>
+        </div>
+        <b>Present Address:</b>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div>Address Line1:<span>*</span></div>
+            <input
+              type="text"
+              id="line1AddressPresent"
+              name="line1paddr"
+              onchange="address();changeColor('line1paddr')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Address Line2:<span>*</span></div>
+            <input
+              type="text"
+              id="line2AddressPresent"
+              name="line2paddr"
+              onchange="address();changeColor('line2paddr')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Country:<span>*</span></div>
+            <select
+              name="country"
+              id="countryPresent"
+              class="pcountry"
+              onclick="address();changeColor('country')"
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>State:<span>*</span></div>
+            <select
+              name="state"
+              id="statePresent"
+              class="pstate"
+              onchange="address();changeColor('state')"
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>City:<span>*</span></div>
+            <input
+              id="cityPresent"
+              type="text"
+              name="city"
+              onchange="address();changeColor('city')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Postal Code:<span>*</span></div>
+            <input
+              id="codePresent"
+              name="pcode"
+              type="text"
+              pattern="[0-9]*"
+              onchange="address();changeColor('pcode')"
+            />
+          </div>
+        </div>
+        <b>Permanent Address:</b>
+        <input
+          type="checkbox"
+          id="checkBoxForSamePermanentAndPresentAddress"
+          name="checkaddr"
+          onchange="address();changeColor('line1addr')"
+        />
+        <label for="checkaddr"
+          ><span id="checkboxaddr"
+            >If your present address is same as permanent</span
+          ></label
+        >
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div>Address Line1:<span>*</span></div>
+            <input
+              type="text"
+              id="line1AddressPermanent"
+              name="line1addr"
+              onchange="changeColor('line1addr')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Address Line2:<span>*</span></div>
+            <input
+              type="text"
+              id="line2AddressPermanent"
+              name="line2addr"
+              onchange="changeColor('line2addr')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Country:<span>*</span></div>
+            <select
+              id="countryPermanent"
+              name="country"
+              class="country"
+              onclick="changeColor('country1')"
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>State:<span>*</span></div>
+            <select
+              name="state"
+              id="statePermanent"
+              class="state"
+              onchange="changeColor('state1')"
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>City:<span>*</span></div>
+            <input
+              id="cityPermanent"
+              type="text"
+              name="pcity"
+              onchange="changeColor('pcity')"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Postal Code:<span>*</span></div>
+            <input
+              id="codePermanent"
+              name="prcode"
+              type="text"
+              pattern="[0-9]*"
+              onchange="changeColor('prcode')"
+            />
+          </div>
+        </div>
+      </fieldset>
+      <div id="subs">
+        <input type="checkbox" id="checkBoxForSubscription" />
+        <label for="check">Suscribe to our newsletter</label>
+      </div>
+      <div id="msg"></div>
+      <div id="submit"><input type="submit" value="Submit" /></div>
+    </form>
+    <script src="./countries.js"></script>
+    <script language="javascript">
+      populateMobilecode("mobcode");
+      populateCountries("countryPresent", "statePresent");
+      var check = document.getElementById("checkBoxForSamePermanentAndPresentAddress");
+      if (check.checked === false) {
+        populateCountries("countryPermanent", "statePermanent");
+      }
+    </script>
+    <script src="./form.js"></script>
+  </body>
+</html>
