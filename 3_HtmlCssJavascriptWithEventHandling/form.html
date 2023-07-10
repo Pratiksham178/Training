@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Space+Mono|Muli"
+    />
+    <link rel="stylesheet" href="./form.css" />
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <form class="form" onsubmit="return validate()">
+      <div id="registrationFormHeading">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg"
+          id="profimage"
+          alt="image"
+        />
+        <div id="registrationFormText">Registration Form</div>
+      </div>
+      <fieldset class="fieldset">
+        <legend>Personal Information:</legend>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div>First Name:<span>*</span></div>
+            <input
+              type="text"
+              id="fname"
+              name="fname"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Last Name:</div>
+            <input type="text" id="lname" name="lname" />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Email:<span>*</span></div>
+            <input
+              type="email"
+              id="mail"
+              name="mail"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Mobile Number:<span>*</span></div>
+            <div id="mobile">
+              <select
+                name="mobcode"
+                id="mobcode"
+                class="mobcode"
+              ></select>
+              <input
+                type="tel"
+                id="mob"
+                maxlength="10"
+                name="mob"
+                pattern="[0-9]{10}"
+              />
+            </div>
+          </div>
+          <div class="eachDivInGrid">
+            <div>Gender:<span>*</span></div>
+            <input type="radio"  name="genderbox" value="male" />
+            <label for="male">Male</label>
+            <input type="radio" name="genderbox" value="female" />
+            <label for="female">Female</label>
+          </div>
+          <div class="eachDivInGrid">
+            <div>DOB:<span>*</span></div>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Profile Picture:<span>*</span></div>
+            <input type="file" id="image" name="image" />
+            <p id="incorrectimage"></p>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend>Additional Information:</legend>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGridInGrid">
+            <div>Language Known:</div>
+            <input type="checkbox" id="Hindi" name = "lang" value="Hindi"/>
+            <label for="Hindi">Hindi</label>
+            <input type="checkbox" id="English" name = "lang" value="English"/>
+            <label for="English">English</label>
+            <input type="checkbox" id="otherLanguageCheckBox" />
+            <label for="Others">Others</label>
+            <input type="text" id="otherlang" name = "lang"/>
+          </div>
+          <div class="eachDivInGrid">
+            <div>Hobbies:</div>
+            <input type="checkbox" id="dancing" name = "hobby" value="Dancing"/>
+            <label for="dancing">Dancing</label>
+            <input type="checkbox" id="singing" name = "hobby" value="Singing"/>
+            <label for="singing">Singing</label>
+            <input type="checkbox" id="otherHobbyCheckBox" />
+            <label for="Others">Others</label>
+            <input type="text" id="otherhobby" name = "hobby"  />
+          </div>
+        </div>
+        <b>Present Address:</b>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div>Address Line1:<span>*</span></div>
+            <input
+              type="text"
+              id="line1AddressPresent"
+              name="line1paddr"
+              address="present"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Address Line2:<span>*</span></div>
+            <input
+              type="text"
+              id="line2AddressPresent"
+              name="line2paddr"
+              address="present"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Country:<span>*</span></div>
+            <select
+              name="country"
+              id="countryPresent"
+              class="pcountry"
+              address="present"
+              value=""
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>State:<span>*</span></div>
+            <select
+              name="state"
+              id="statePresent"
+              class="pstate"
+              address="present"
+              value=""
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>City:<span>*</span></div>
+            <input
+              id="cityPresent"
+              type="text"
+              name="city"
+              address="present"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Postal Code:<span>*</span></div>
+            <input
+              id="pcodePresent"
+              name="pcode"
+              type="text"
+              pattern="[0-9]*"
+              address="present"
+            />
+          </div>
+        </div>
+        <b>Permanent Address:</b>
+        <input
+          type="checkbox"
+          id="checkBoxForSamePermanentAndPresentAddress"
+          name="checkaddr"
+          address="present"
+        />
+        <label for="checkaddr"
+          ><span id="checkboxaddr"
+            >If your present address is same as permanent</span
+          ></label
+        >
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div>Address Line1:<span>*</span></div>
+            <input
+              type="text"
+              id="line1AddressPermanent"
+              name="line1addr"
+              address="present"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Address Line2:<span>*</span></div>
+            <input
+              type="text"
+              id="line2AddressPermanent"
+              name="line2addr"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Country:<span>*</span></div>
+            <select
+              id="countryPermanent"
+              name="country"
+              class="country"
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>State:<span>*</span></div>
+            <select
+              name="state"
+              id="statePermanent"
+              class="state"
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>City:<span>*</span></div>
+            <input
+              id="cityPermanent"
+              type="text"
+              name="pcity"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Postal Code:<span>*</span></div>
+            <input
+              id="pcodePermanent"
+              name="prcode"
+              type="text"
+              pattern="[0-9]*"
+            />
+          </div>
+        </div>
+      </fieldset>
+      <div id="subs">
+        <input type="checkbox" id="checkBoxForSubscription" />
+        <label for="check">Suscribe to our newsletter</label>
+      </div>
+      <div id="msg"></div>
+      <div id="submit"><input type="submit" value="Submit" /></div>
+      <table id="printInformation"></table>
+      </div>
+    </form>
+
+    <script src="./countries.js"></script>
+    <script src="./form.js"></script>
+  </body>
+</html>
