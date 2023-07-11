@@ -120,6 +120,7 @@ function validate(){
     let msg = document.getElementById("msg");
     msg.innerText="";
     var msg1 = document.createElement("p");
+    var msg2 = document.createElement("p");
 
     const array = ["fname","lname","mail","mob","dob",'image',
     "line1AddressPresent","countryPresent","cityPresent","pcodePresent","statePresent",
@@ -134,33 +135,29 @@ function validate(){
     for(let i=0;i<array.length;i++){
         flag=checkNull(array[i]);
     }
-    if(!fname.value.match(/^[A-Za-z]+/)){
+    if(!fname.value.match(/^[A-Za-z]+/) && fname.value!=""){
         fname.style.border="1px solid brown";
         msg1.innerText="Enter correct name";
-        msg.appendChild(msg1);
-        flag=2;
+        console.log("hi")
+        msg.append(msg1)
     }
     if( yr-year<18){
         msg1.innerText="You need to be 18 by 01-01-2023";
-        msg.append(msg1)
-        flag=2;
+        msg.append(msg1);
     }
     if(!(lname.value.match(/^[A-Za-z]+/)) && lname.value!=""){
         lname.style.border="1px solid brown";
         let msg2 = document.createElement("p")
         msg2.innerText="Enter correct name";
-        msg.appendChild(msg2);
-        flag=2;
+        msg.append(msg2)
     }
     
-    if(flag>0){
+    if(flag==1){
         msg.style.display="block";
         msg.style.color="brown";
         msg.style.marginLeft="1.4vw";
-        if(flag===1){
-            msg1.innerText="Please enter required field"
-            msg.appendChild(msg1);
-        }
+        msg2.innerText="Please enter required field"
+        msg.appendChild(msg2);
         return false;
     }else{
         msg.remove()
@@ -178,7 +175,7 @@ function validate(){
         Profile : image.value,
         Language : lang,
         hobby : hobbies,
-        Presentaddr : {
+        PresentAddress : {
             AddressLine1 : addr1.value,
             AddressLine2 :  addr2,
             City :  city.value,
@@ -186,7 +183,7 @@ function validate(){
             Country :  country.value,
             PostalCode :  pcode.value,
         },
-        Permanentaddr : {
+        PermanentAddress : {
             Address1 : addr1per.value,
             Address2 :  addr2per,
             City :  cityper.value,
@@ -234,6 +231,7 @@ function addImage(){
         file.value ="";
         inc.style.color="brown";
     }
+    file.style.border = "none"
 }
 function changeColor(elementId){
     box=document.getElementById(elementId);
