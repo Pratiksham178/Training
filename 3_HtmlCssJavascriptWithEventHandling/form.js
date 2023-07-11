@@ -83,14 +83,13 @@ function getValueFromRadioAndCheckBox(elementName){
     var answer = ans.toString()
     return answer
 }
-function printInformationInScreen(elementId){
-    var eleId = document.getElementById(elementId);
+function printInformationInScreen(info,infohead){
     var tablecolumninfo = document.createElement("td");
     var tablecolumninfohead = document.createElement("td");
     var table = document.getElementById("printInformation");
     var row = document.createElement("tr");
-    tablecolumninfohead.innerText = elementId;
-    tablecolumninfo.innerText = eleId.value;
+    tablecolumninfohead.innerText = infohead + ":";
+    tablecolumninfo.innerText = info;
     row.appendChild(tablecolumninfohead);
     row.appendChild(tablecolumninfo);
     table.appendChild(row);
@@ -170,18 +169,18 @@ function validate(){
     var lang = getValueFromRadioAndCheckBox("lang")
     var hobbies = getValueFromRadioAndCheckBox("hobby")
     const info={
-        fname : fname.value,
-        lname : lname.value,
-        mail : mail.value,
-        mob : mob.value,
-        gender : gender,
-        dob : dob1,
-        profile : image.value,
-        language : lang,
+        First_Name : fname.value,
+        Last_Name : lname.value,
+        Email : mail.value,
+        Mobile_No : mob.value,
+        Gender : gender,
+        DOB : dob1,
+        Profile : image.value,
+        Language : lang,
         hobby : hobbies,
         Presentaddr : {
-            Address1 : addr1.value,
-            Address2 :  addr2,
+            AddressLine1 : addr1.value,
+            AddressLine2 :  addr2,
             City :  city.value,
             State :  state.value,
             Country :  country.value,
@@ -197,8 +196,25 @@ function validate(){
         }
     }
     console.log(info)
-    for(let i=0;i<array.length;i++){
-        printInformationInScreen(array[i])
+    for(let x in info){
+        table=document.getElementById("printInformation");
+        row=document.createElement("tr");
+        td=document.createElement("td");
+        td.colspan = "2";
+        if(typeof info[x] === "object"){
+            td.innerText=x;
+            td.style.fontWeight="700";
+            row.appendChild(td);
+            table.appendChild(row);
+            for(let addrinfo in info[x]){
+                printInformationInScreen(info[x][addrinfo],addrinfo)
+            }
+            
+        }
+        else{
+            printInformationInScreen(info[x],x)
+        }
+        
     }
     return false;
 }
