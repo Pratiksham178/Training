@@ -1,0 +1,158 @@
+$(document).ready(function(){
+    $.getJSON('countries.json',function(country){
+        console.log(country)
+        function populateStates(countryId,stateId){
+            var SelectedCountryindex = $(`#${countryId}`).prop('selectedIndex');
+            $(`#${stateId}`).empty().append(new Option("", ""))
+	        $(`#${stateId}`).selectedIndex = 0;
+            console.log(country[SelectedCountryindex-1])
+            $.each(country[SelectedCountryindex-1].states,function(index,value){
+                $(`#${stateId}`).append(new Option(value, value));
+            })
+        }
+        function populateCountries(countryId,stateId){
+            $(`#${countryId}`).append(new Option("", ""));
+            $(`#${countryId}`).selectedIndex = 0;
+            $.each(country,function(index,value){
+                $(`#${countryId}`).append(new Option(value.country, value.country));
+            });
+            $(`#${countryId}`).change(function(){
+                populateStates(countryId,stateId);
+            });
+        }
+        populateCountries("countryPresent","statePresent");
+        if(!($("#checkBoxForSamePermanentAndPresentAddress").is(":checked"))){
+            populateCountries("countryPermanent","statePermanent")
+        }    
+    })
+    function addressSamePresentPermanent(){
+        if($("#checkBoxForSamePermanentAndPresentAddress").is(":checked")){
+            $("#statePermanent").append(new Option($("#statePresent").val(), $("#statePresent").val()));
+            $("#line1AddressPermanent").val($("#line1AddressPresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
+            $("#line2AddressPermanent").val($("#line2AddressPresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
+            $("#statePermanent").val($("#statePresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
+            $("#countryPermanent").val($("#countryPresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
+            $("#pcodePermanent").val($("#pcodePresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
+            $("#cityPermanent").val($("#cityPresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
+        }else{
+            $("#line1AddressPermanent").val("").prop('disabled', false);
+            $("#line2AddressPermanent").val("").prop('disabled', false);
+            $("#statePermanent").val("").prop('disabled', false);
+            $("#countryPermanent").val("").prop('disabled', false);
+            $("#pcodePermanent").val("").prop('disabled', false);
+            $("#cityPermanent").val("").prop('disabled', false);
+        }
+    }
+    function addImage(){
+        let path = URL.createObjectURL($("#image").get(0).files[0]);
+        let type = $("#image").css({"border":"none"}).get(0).files[0].name.split(".").pop();
+        if(type==="jpg"||type==="jpeg"|| type === "png"){
+            $("#profimage").attr("src",path);
+            $("#incorrectimage").text("");
+        }else{
+            $("#incorrectimage").text("Please upload correct file type").css({"color":"brown"});
+            $("#image").val("").css({"border":"none"});
+        }
+        
+    }
+    function validateEmptyField(elementId){
+        if($(`#${elementId}`).val()==="" || $(`#${elementId}`).val()===null){
+            $(`#${elementId}`).css({"border":"1px solid brown"});
+            return 1;
+        }
+        return 0
+    }
+    function getValueFromRadioAndCheckBox(elementName){
+        var ans =[]
+        $(`.${elementName}`).each(function(index,eachelement){
+            if($(eachelement).is(":checked")){
+                ans.push($(eachelement).val())
+            }
+            if($(eachelement).attr("type")==="text"){
+                ans.push($(eachelement).val())
+            }
+        })
+        return ans.toString()
+    }
+    $(".form").change((e)=>{
+        if(e.target.id!=""){
+            if(e.target.id==="image"){
+                addImage();
+            }
+            else{
+                if(e.target.id==="checkBoxForSamePermanentAndPresentAddress" || $(e.target).attr("address")==="Present Address"){
+                    addressSamePresentPermanent();
+        
+                }else if(e.target.id==="otherHobbyCheckBox" || e.target.id==="otherLanguageCheckBox"){
+                    var target = $(e.target).attr("box-id");
+                    if($(`#${e.target.id}`).is(":checked")){
+                        $(`#${target}`).css({"display":"inline"});
+                    }else{
+                        $(`#${target}`).css({"display":"none"})
+                    }
+                }
+                $(`#${e.target.id}`).css({"border":"1px solid grey"});
+            }
+        }
+    })
+    $("#submit").click(function(){
+        var allInputs = $(":input");
+        var flag=0;
+        var obj={};
+        var PresentAddress={};
+        var PermanentAddress={};
+        $("#msg").empty();
+        $.each(allInputs,function(index,value){
+            if($(value).attr('type')=="text"|| $(value).attr('type')==="file" || $(value).attr('type')==="date" || $(value).attr('type')==="tel"|| $(value).attr('type')==="email" || $(value).attr('class')==="country"|| $(value).attr('class')==="state"){
+                flag=validateEmptyField(value.id);
+                flagcheck=1
+            }
+            if(value.id=="fname"||value.id=="lname"){
+                if($(value).val()!="" &&  !$(value).val().match(/^[A-Za-z]+/)){
+                    $(value).css({"border":"1px solid brown"})
+                    $("#msg").append('<p>Incorrect name</p>');
+                    flag=1;
+                }
+            }
+        })
+        if(flag>0){
+            $("#msg").css({"color":"brown","display":"block"});
+            if(flagcheck==1){
+                $("#msg").append('<p>Please enter required details</p>');
+            }
+        }else{
+            let path = URL.createObjectURL($("#image").get(0).files[0]);
+            $("#printInformation").append(`<thead><td class="yourdetails">Your Details:</td><td><img src=${path} id="imageown" alt="image"/></td>`).css({"width":"100%"});
+            $.each(allInputs,function(index,value){
+                if(($(value).attr('type')==="text"|| $(value).attr('type')==="file" || $(value).attr('type')==="date" || $(value).attr('type')==="tel"|| $(value).attr('type')==="email") &&
+                $(value).attr('address')!="Present Address" &&  $(value).attr('address')!="Permanent Address" &&
+                value.id!="otherhobby" && value.id!="otherlang"){
+                    obj[$(value).attr('name')] = $(value).val();
+                }
+                else if($(value).attr('address')==="Present Address"){
+                    PresentAddress[$(value).attr('name')]=$(value).val();
+                }else if($(value).attr('address')==="Permanent Address"){
+                    PermanentAddress[$(value).attr('name')]=$(value).val();
+                }else if(($(value).attr('type')==="checkbox" || $(value).attr('type')==="radio")  && ($(value).attr("name")==="LanguageKnown" || $(value).attr("name")==="hobby" || $(value).attr("name")==="Gender")){
+                    obj[$(value).attr("name")]=getValueFromRadioAndCheckBox($(value).attr("name"));
+                }
+            })
+            obj["Present Address"]=PresentAddress;
+            obj["Permanent Address"]=PermanentAddress;
+            console.log(obj)
+            $.each(obj,function(index,value){
+                if(jQuery.type(value) === "object"){
+                    $("#printInformation").append(`<tr><td class="address">${index}</td></tr>`);
+                    $(".address").css({"fontWeight":"700"});
+                    $.each(value,function(indexaddress,valueofaddress){
+                        $("#printInformation").append(`<tr><td class="infohead">${indexaddress}:</td><td class="info">${valueofaddress}</td></tr>`);
+                        $(".infohead").css({"width":"60%"});
+                    })
+                }else{
+                    $("#printInformation").append(`<tr><td class="infohead">${index}:</td><td class="info">${value}</td></tr>`).css({"width":"100%"});
+                    $(".infohead").css({"width":"55%"});
+                }
+            })
+        }
+    })
+})

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Space+Mono|Muli"/>
+    <link rel="stylesheet" href="./form.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Registration Form</title>
+  </head>
+  <body>
+    <div class="form" >
+      <div class="registrationFormHeading">
+        <img
+          src="https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg"
+          id="profimage"
+          alt="image"
+        />
+        <div id="registrationFormText">Registration Form</div>
+      </div>
+      <fieldset class="fieldset">
+        <legend>Personal Information:</legend>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div >First Name:<span>*</span></div>
+            <input
+              type="text"
+              id="fname"
+              name="FirstName"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Last Name:</div>
+            <input type="text" id="lname" name="LastName" />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Email:<span>*</span></div>
+            <input
+              type="email"
+              id="mail"
+              name="Email"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Mobile Number:<span>*</span></div>
+              <input
+                type="tel"
+                id="mob"
+                maxlength="10"
+                name="Mobile_No."
+                pattern="[0-9]{10}"
+              />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Gender:<span>*</span></div>
+            <input type="radio"  name="Gender" value="male" class="Gender" id="male"/>
+            <label for="male">Male</label>
+            <input type="radio" name="Gender" value="female" class="Gender" id="female"/>
+            <label for="female">Female</label>
+          </div>
+          <div class="eachDivInGrid">
+            <div>DOB:<span>*</span></div>
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Profile Picture:<span>*</span></div>
+            <input type="file" id="image" name="image" />
+            <p id="incorrectimage"></p>
+          </div>
+        </div>
+      </fieldset>
+      <fieldset class="fieldset">
+        <legend>Additional Information:</legend>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGridInGrid">
+            <div>Language Known:</div>
+            <input type="checkbox" id="Hindi" name="LanguageKnown" class="LanguageKnown" value="Hindi"/>
+            <label for="Hindi">Hindi</label>
+            <input type="checkbox" id="English" name="LanguageKnown" value="English" class="LanguageKnown"/>
+            <label for="English">English</label>
+            <input type="checkbox" id="otherLanguageCheckBox" box-id="otherlang"  />
+            <label for="Others">Others</label>
+            <input type="text" id="otherlang" name="LanguageKnown" class="LanguageKnown"/>
+          </div>
+          <div class="eachDivInGrid">
+            <div>Hobbies:</div>
+            <input type="checkbox" id="dancing" name="hobby" value="Dancing" class="hobby"/>
+            <label for="dancing">Dancing</label>
+            <input type="checkbox" id="singing" name="hobby" value="Singing" class="hobby"/>
+            <label for="singing">Singing</label>
+            <input type="checkbox" id="otherHobbyCheckBox" box-id="otherhobby" />
+            <label for="Others">Others</label>
+            <input type="text" id="otherhobby" name = "hobby"  class="hobby"/>
+          </div>
+        </div>
+        <b>Present Address:</b>
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div>Address Line1:<span>*</span></div>
+            <input
+              type="text"
+              id="line1AddressPresent"
+              name="Line1"
+              address="Present Address"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Address Line2:</div>
+            <input
+              type="text"
+              id="line2AddressPresent"
+              name="Line2"
+              address="Present Address"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Country:<span>*</span></div>
+            <select
+              name="country"
+              id="countryPresent"
+              class="Country"
+              address="Present Address"
+              value=""
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>State:<span>*</span></div>
+            <select
+              name="state"
+              id="statePresent"
+              class="State"
+              address="Present Address"
+              value=""
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>City:<span>*</span></div>
+            <input
+              id="cityPresent"
+              type="text"
+              name="City"
+              address="Present Address"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Postal Code:<span>*</span></div>
+            <input
+              id="pcodePresent"
+              name="Postal Code"
+              type="text"
+              pattern="[0-9]*"
+              address="Present Address"
+            />
+          </div>
+        </div>
+        <b>Permanent Address:</b>
+        <input
+          type="checkbox"
+          id="checkBoxForSamePermanentAndPresentAddress"
+          name="checkaddr"
+        />
+        <label for="checkaddr"
+          ><span id="checkboxaddr"
+            >If your present address is same as permanent</span
+          ></label
+        >
+        <div class="divForUsingGridForTwoColumns">
+          <div class="eachDivInGrid">
+            <div>Address Line1:<span>*</span></div>
+            <input
+              type="text"
+              id="line1AddressPermanent"
+              name="Line 1"
+              address="Permanent Address"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Address Line2:</div>
+            <input
+              type="text"
+              id="line2AddressPermanent"
+              name="Line 2"
+              address="Permanent Address"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Country:<span>*</span></div>
+            <select
+              id="countryPermanent"
+              name="Country"
+              class="country"
+              address="Permanent Address"
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>State:<span>*</span></div>
+            <select
+              name="State"
+              id="statePermanent"
+              class="state"
+              address="Permanent Address"
+            ></select>
+          </div>
+          <div class="eachDivInGrid">
+            <div>City:<span>*</span></div>
+            <input
+              id="cityPermanent"
+              type="text"
+              name="City"
+              address="Permanent Address"
+            />
+          </div>
+          <div class="eachDivInGrid">
+            <div>Postal Code:<span>*</span></div>
+            <input
+              id="pcodePermanent"
+              name="Postal Code"
+              type="text"
+              pattern="[0-9]*"
+              address="Permanent Address"
+            />
+          </div>
+        </div>
+      </fieldset>
+      <div id="subs">
+        <input type="checkbox" id="checkBoxForSubscription" />
+        <label for="check">Suscribe to our newsletter</label>
+      </div>
+      <div id="msg"></div>
+      <div id="submit"><input type="submit" value="Submit" /></div>
+      <div id="details" class="registrationFormHeading"></div><table id="printInformation"></table>
+      </div>
+    </div>
+
+    <script src="./form.js"></script>
+  </body>
+</html>
