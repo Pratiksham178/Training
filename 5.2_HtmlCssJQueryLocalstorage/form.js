@@ -32,7 +32,11 @@ $(document).ready(function(){
                     css({"border":"1px solid grey"}).prop('disabled', true);
                 }) 
             }else{
-                $("[address='Permanent Address']").prop('disabled', false)
+                $("[address='Permanent Address']").prop('disabled', false).each(function(index,value){
+                    if($(value).val()==""||$(value).val()==null){
+                        $(value).css({"border":"1px solid brown"})
+                    }
+                })
             }
         }
         function addImage(){
