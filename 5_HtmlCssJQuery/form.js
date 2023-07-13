@@ -55,7 +55,6 @@ $(document).ready(function(){
                 else{
                     if(e.target.id==="checkBoxForSamePermanentAndPresentAddress" || $(e.target).attr("address")==="Present Address"){
                         addressSamePresentPermanent();
-                        console.log(e.target.id)
                     }else if(e.target.id==="otherHobbyCheckBox" || e.target.id==="otherLanguageCheckBox"){
                         var target = $(e.target).attr("box-id");
                         if($(`#${e.target.id}`).is(":checked")){
@@ -106,6 +105,14 @@ $(document).ready(function(){
                 if($(value).val()!="" &&  !$(value).val().match(/^[A-Za-z]+/)){
                     $(value).css({"border":"1px solid brown"})
                     $("#msg").append('<p>Incorrect name</p>');
+                    flag=1;
+                }
+            }
+            if(value.id=="dob" && $(value).val()!=""){
+                var date = new Date();
+                if(Number(date.getFullYear())-Number($(value).val().slice(0,4))<18){
+                    $(value).css({"border":"1px solid brown"})
+                    $("#msg").append('<p>You need to be 18 by 01-01-2023</p>');
                     flag=1;
                 }
             }
