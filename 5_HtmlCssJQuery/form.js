@@ -1,6 +1,5 @@
 $(document).ready(function(){
     $.getJSON('countries.json',function(country){
-        console.log(country)
         function populateStates(countryId,stateId){
             var SelectedCountryindex = $(`#${countryId}`).prop('selectedIndex');
             $(`#${stateId}`).empty().append(new Option("", ""))
@@ -44,16 +43,19 @@ $(document).ready(function(){
         }
     }
     function addImage(){
-        let path = URL.createObjectURL($("#image").get(0).files[0]);
-        let type = $("#image").css({"border":"none"}).get(0).files[0].name.split(".").pop();
-        if(type==="jpg"||type==="jpeg"|| type === "png"){
-            $("#profimage").attr("src",path);
-            $("#incorrectimage").text("");
+        if($("#image").get(0).files[0]=="" || $("#image").get(0).files[0]== null){
+            $("#profimage").attr("src","https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg");
         }else{
-            $("#incorrectimage").text("Please upload correct file type").css({"color":"brown"});
-            $("#image").val("").css({"border":"none"});
+            let path = URL.createObjectURL($("#image").get(0).files[0]);
+            let type = $("#image").css({"border":"none"}).get(0).files[0].name.split(".").pop();
+            if(type==="jpg"||type==="jpeg"|| type === "png"){
+                $("#profimage").attr("src",path);
+                $("#incorrectimage").text("");
+            }else{
+                $("#incorrectimage").text("Please upload correct file type").css({"color":"brown"});
+                $("#image").val("").css({"border":"none"});
+            }
         }
-        
     }
     function validateEmptyField(elementId){
         if($(`#${elementId}`).val()==="" || $(`#${elementId}`).val()===null){
@@ -82,7 +84,6 @@ $(document).ready(function(){
             else{
                 if(e.target.id==="checkBoxForSamePermanentAndPresentAddress" || $(e.target).attr("address")==="Present Address"){
                     addressSamePresentPermanent();
-        
                 }else if(e.target.id==="otherHobbyCheckBox" || e.target.id==="otherLanguageCheckBox"){
                     var target = $(e.target).attr("box-id");
                     if($(`#${e.target.id}`).is(":checked")){
@@ -103,9 +104,11 @@ $(document).ready(function(){
         var PermanentAddress={};
         $("#msg").empty();
         $.each(allInputs,function(index,value){
-            if($(value).attr('type')=="text"|| $(value).attr('type')==="file" || $(value).attr('type')==="date" || $(value).attr('type')==="tel"|| $(value).attr('type')==="email" || $(value).attr('class')==="country"|| $(value).attr('class')==="state"){
+            if(($(value).attr('type')=="text"|| $(value).attr('type')==="file" || $(value).attr('type')==="date" || 
+            $(value).attr('type')==="tel"|| $(value).attr('type')==="email" || $(value).attr('class')==="Country"||
+            $(value).attr('class')==="State") && (value.id!="otherhobby" && value.id!="otherlang")){
                 flag=validateEmptyField(value.id);
-                flagcheck=1
+                flagcheck=1;
             }
             if(value.id=="fname"||value.id=="lname"){
                 if($(value).val()!="" &&  !$(value).val().match(/^[A-Za-z]+/)){
