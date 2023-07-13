@@ -28,7 +28,8 @@ $(document).ready(function(){
             if($("#checkBoxForSamePermanentAndPresentAddress").is(":checked")){
                 populateStates("countryPresent","statePermanent");
                 $("[address='Present Address']").each(function(index,value){
-                    $(`#${ $(value).attr("copyTo")}`).val($(`#${value.id}`).val()).css({"border":"1px solid grey"}).prop('disabled', true);
+                    $(`#${ $(value).attr("copyTo")}`).val($(`#${value.id}`).val()).
+                    css({"border":"1px solid grey"}).prop('disabled', true);
                 }) 
             }else{
                 $("[address='Permanent Address']").prop('disabled', false)
@@ -55,7 +56,8 @@ $(document).ready(function(){
                     addImage();
                 }
                 else{
-                    if(e.target.id==="checkBoxForSamePermanentAndPresentAddress" || $(e.target).attr("address")==="Present Address"){
+                    if(e.target.id==="checkBoxForSamePermanentAndPresentAddress" || 
+                    $(e.target).attr("address")==="Present Address"){
                         addressSamePresentPermanent();
                     }else if(e.target.id==="otherHobbyCheckBox" || e.target.id==="otherLanguageCheckBox"){
                         var target = $(e.target).attr("box-id");
@@ -97,9 +99,10 @@ $(document).ready(function(){
         var PermanentAddress={};
         $("#msg").empty();
         $.each(allInputs,function(index,value){
-            if(($(value).attr('type')=="text"|| $(value).attr('type')==="file" || $(value).attr('type')==="date" || 
-            $(value).attr('type')==="tel"|| $(value).attr('type')==="email" || $(value).attr('class')==="Country"||
-            $(value).attr('class')==="State") && (value.id!="otherhobby" && value.id!="otherlang")){
+            if(($(value).attr('type')=="text"|| $(value).attr('type')==="file" || 
+            $(value).attr('type')==="date" || $(value).attr('type')==="tel"|| $(value).attr('type')==="email" 
+            || $(value).attr('class')==="Country"||$(value).attr('class')==="State") && 
+            (value.id!="otherhobby" && value.id!="otherlang")){
                 flag=validateEmptyField(value.id);
                 flagcheck=1;
             }
@@ -128,9 +131,10 @@ $(document).ready(function(){
             let path = URL.createObjectURL($("#image").get(0).files[0]);
             $("#printInformation").append(`<thead><td class="yourdetails">Your Details:</td><td><img src=${path} id="imageown" alt="image"/></td>`).css({"width":"100%"});
             $.each(allInputs,function(index,value){
-                if(($(value).attr('type')==="text"|| $(value).attr('type')==="file" || $(value).attr('type')==="date" || $(value).attr('type')==="tel"|| $(value).attr('type')==="email") &&
-                $(value).attr('address')!="Present Address" &&  $(value).attr('address')!="Permanent Address" &&
-                value.id!="otherhobby" && value.id!="otherlang"){
+                if(($(value).attr('type')==="text"|| $(value).attr('type')==="file" || 
+                $(value).attr('type')==="date" || $(value).attr('type')==="tel"|| 
+                $(value).attr('type')==="email") && $(value).attr('address')!="Present Address" &&  
+                $(value).attr('address')!="Permanent Address" && value.id!="otherhobby" && value.id!="otherlang"){
                     obj[$(value).attr('name')] = $(value).val();
                 }
                 else if($(value).attr('address')==="Present Address"){
