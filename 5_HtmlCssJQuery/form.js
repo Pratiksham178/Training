@@ -4,10 +4,11 @@ $(document).ready(function(){
             var SelectedCountryindex = $(`#${countryId}`).prop('selectedIndex');
             $(`#${stateId}`).empty().append(new Option("", ""))
 	        $(`#${stateId}`).selectedIndex = 0;
-            console.log(country[SelectedCountryindex-1])
-            $.each(country[SelectedCountryindex-1].states,function(index,value){
-                $(`#${stateId}`).append(new Option(value, value));
-            })
+            if(SelectedCountryindex>0){
+                $.each(country[SelectedCountryindex].states,function(index,value){
+                    $(`#${stateId}`).append(new Option(value, value));
+                })
+            }
         }
         function populateCountries(countryId,stateId){
             $(`#${countryId}`).append(new Option("", ""));
@@ -22,41 +23,52 @@ $(document).ready(function(){
         populateCountries("countryPresent","statePresent");
         if(!($("#checkBoxForSamePermanentAndPresentAddress").is(":checked"))){
             populateCountries("countryPermanent","statePermanent")
-        }    
-    })
-    function addressSamePresentPermanent(){
-        if($("#checkBoxForSamePermanentAndPresentAddress").is(":checked")){
-            $("#statePermanent").append(new Option($("#statePresent").val(), $("#statePresent").val()));
-            $("#line1AddressPermanent").val($("#line1AddressPresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
-            $("#line2AddressPermanent").val($("#line2AddressPresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
-            $("#statePermanent").val($("#statePresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
-            $("#countryPermanent").val($("#countryPresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
-            $("#pcodePermanent").val($("#pcodePresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
-            $("#cityPermanent").val($("#cityPresent").val()).css({"border":"1px solid grey"}).prop('disabled', true);
-        }else{
-            $("#line1AddressPermanent").val("").prop('disabled', false);
-            $("#line2AddressPermanent").val("").prop('disabled', false);
-            $("#statePermanent").val("").prop('disabled', false);
-            $("#countryPermanent").val("").prop('disabled', false);
-            $("#pcodePermanent").val("").prop('disabled', false);
-            $("#cityPermanent").val("").prop('disabled', false);
-        }
-    }
-    function addImage(){
-        if($("#image").get(0).files[0]=="" || $("#image").get(0).files[0]== null){
-            $("#profimage").attr("src","https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg");
-        }else{
-            let path = URL.createObjectURL($("#image").get(0).files[0]);
-            let type = $("#image").css({"border":"none"}).get(0).files[0].name.split(".").pop();
-            if(type==="jpg"||type==="jpeg"|| type === "png"){
-                $("#profimage").attr("src",path);
-                $("#incorrectimage").text("");
-            }else{
-                $("#incorrectimage").text("Please upload correct file type").css({"color":"brown"});
-                $("#image").val("").css({"border":"none"});
+        } 
+        function addressSamePresentPermanent(){
+            if($("#checkBoxForSamePermanentAndPresentAddress").is(":checked")){
+                populateStates("countryPresent","statePermanent");
+                $("[address='Present Address']").each(function(index,value){
+                    $(`#${ $(value).attr("copyTo")}`).val($(`#${value.id}`).val()).css({"border":"1px solid grey"});
+                }) 
             }
         }
-    }
+        function addImage(){
+            if($("#image").get(0).files[0]=="" || $("#image").get(0).files[0]== null){
+                $("#profimage").attr("src","https://static.vecteezy.com/system/resources/previews/005/544/718/original/profile-icon-design-free-vector.jpg");
+            }else{
+                let path = URL.createObjectURL($("#image").get(0).files[0]);
+                let type = $("#image").css({"border":"none"}).get(0).files[0].name.split(".").pop();
+                if(type==="jpg"||type==="jpeg"|| type === "png"){
+                    $("#profimage").attr("src",path);
+                    $("#incorrectimage").text("");
+                }else{
+                    $("#incorrectimage").text("Please upload correct file type").css({"color":"brown"});
+                    $("#image").val("").css({"border":"none"});
+                }
+            }
+        }
+        $(".form").change((e)=>{
+            if(e.target.id!=""){
+                if(e.target.id==="image"){
+                    addImage();
+                }
+                else{
+                    if(e.target.id==="checkBoxForSamePermanentAndPresentAddress" || $(e.target).attr("address")==="Present Address"){
+                        addressSamePresentPermanent();
+                        console.log(e.target.id)
+                    }else if(e.target.id==="otherHobbyCheckBox" || e.target.id==="otherLanguageCheckBox"){
+                        var target = $(e.target).attr("box-id");
+                        if($(`#${e.target.id}`).is(":checked")){
+                            $(`#${target}`).css({"display":"inline"});
+                        }else{
+                            $(`#${target}`).css({"display":"none"})
+                        }
+                    }
+                    $(`#${e.target.id}`).css({"border":"1px solid grey"});
+                }
+            }
+        })
+    })
     function validateEmptyField(elementId){
         if($(`#${elementId}`).val()==="" || $(`#${elementId}`).val()===null){
             $(`#${elementId}`).css({"border":"1px solid brown"});
@@ -76,26 +88,6 @@ $(document).ready(function(){
         })
         return ans.toString()
     }
-    $(".form").change((e)=>{
-        if(e.target.id!=""){
-            if(e.target.id==="image"){
-                addImage();
-            }
-            else{
-                if(e.target.id==="checkBoxForSamePermanentAndPresentAddress" || $(e.target).attr("address")==="Present Address"){
-                    addressSamePresentPermanent();
-                }else if(e.target.id==="otherHobbyCheckBox" || e.target.id==="otherLanguageCheckBox"){
-                    var target = $(e.target).attr("box-id");
-                    if($(`#${e.target.id}`).is(":checked")){
-                        $(`#${target}`).css({"display":"inline"});
-                    }else{
-                        $(`#${target}`).css({"display":"none"})
-                    }
-                }
-                $(`#${e.target.id}`).css({"border":"1px solid grey"});
-            }
-        }
-    })
     $("#submit").click(function(){
         var allInputs = $(":input");
         var flag=0;
