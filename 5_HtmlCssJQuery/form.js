@@ -5,7 +5,7 @@ $(document).ready(function(){
             $(`#${stateId}`).empty().append(new Option("", ""))
 	        $(`#${stateId}`).selectedIndex = 0;
             if(SelectedCountryindex>0){
-                $.each(country[SelectedCountryindex].states,function(index,value){
+                $.each(country[SelectedCountryindex-1].states,function(index,value){
                     $(`#${stateId}`).append(new Option(value, value));
                 })
             }
@@ -28,8 +28,10 @@ $(document).ready(function(){
             if($("#checkBoxForSamePermanentAndPresentAddress").is(":checked")){
                 populateStates("countryPresent","statePermanent");
                 $("[address='Present Address']").each(function(index,value){
-                    $(`#${ $(value).attr("copyTo")}`).val($(`#${value.id}`).val()).css({"border":"1px solid grey"});
+                    $(`#${ $(value).attr("copyTo")}`).val($(`#${value.id}`).val()).css({"border":"1px solid grey"}).prop('disabled', true);
                 }) 
+            }else{
+                $("[address='Permanent Address']").prop('disabled', false)
             }
         }
         function addImage(){
