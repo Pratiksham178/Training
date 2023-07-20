@@ -1,0 +1,7 @@
+Changed : D:\Projects\Assignments\AssignmentC#\FileWatcher\.vs\fileWatcher\v17\.suo at 14:22:19.4104279
+Created : D:\Projects\Assignments\AssignmentC#\FileWatcher\New Text Document.txt
+At 14:22:47.8515686
+Renamed :
+Old: D:\Projects\Assignments\AssignmentC#\FileWatcher\New Text Document.txt 
+New: D:\Projects\Assignments\AssignmentC#\FileWatcher\k.txt.txt
+at 14:22:53.3483852

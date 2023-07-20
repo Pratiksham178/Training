@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pratiksham\\source\\repos\\firstProject\\firstProject\\firstProject.csproj": {}
+    "D:\\Projects\\Assignments\\AssignmentC#\\firstProject\\firstProject\\firstProject.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pratiksham\\source\\repos\\firstProject\\firstProject\\firstProject.csproj": {
+    "D:\\Projects\\Assignments\\AssignmentC#\\firstProject\\firstProject\\firstProject.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pratiksham\\source\\repos\\firstProject\\firstProject\\firstProject.csproj",
+        "projectUniqueName": "D:\\Projects\\Assignments\\AssignmentC#\\firstProject\\firstProject\\firstProject.csproj",
         "projectName": "firstProject",
-        "projectPath": "C:\\Users\\pratiksham\\source\\repos\\firstProject\\firstProject\\firstProject.csproj",
+        "projectPath": "D:\\Projects\\Assignments\\AssignmentC#\\firstProject\\firstProject\\firstProject.csproj",
         "packagesPath": "C:\\Users\\pratiksham\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pratiksham\\source\\repos\\firstProject\\firstProject\\obj\\",
+        "outputPath": "D:\\Projects\\Assignments\\AssignmentC#\\firstProject\\firstProject\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pratiksham\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -6,3 +6,11 @@ C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.c
 C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.csproj.CoreCompileInputs.cache
 C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.exe
 C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.pdb
+D:\Projects\Assignments\AssignmentC#\FileWatcher\fileWatcher\bin\Debug\fileWatcher.exe.config
+D:\Projects\Assignments\AssignmentC#\FileWatcher\fileWatcher\bin\Debug\fileWatcher.exe
+D:\Projects\Assignments\AssignmentC#\FileWatcher\fileWatcher\bin\Debug\fileWatcher.pdb
+D:\Projects\Assignments\AssignmentC#\FileWatcher\fileWatcher\obj\Debug\fileWatcher.csproj.AssemblyReference.cache
+D:\Projects\Assignments\AssignmentC#\FileWatcher\fileWatcher\obj\Debug\fileWatcher.csproj.SuggestedBindingRedirects.cache
+D:\Projects\Assignments\AssignmentC#\FileWatcher\fileWatcher\obj\Debug\fileWatcher.csproj.CoreCompileInputs.cache
+D:\Projects\Assignments\AssignmentC#\FileWatcher\fileWatcher\obj\Debug\fileWatcher.exe
+D:\Projects\Assignments\AssignmentC#\FileWatcher\fileWatcher\obj\Debug\fileWatcher.pdb

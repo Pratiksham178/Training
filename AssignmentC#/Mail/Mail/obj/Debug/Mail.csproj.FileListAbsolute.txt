@@ -1,0 +1,8 @@
+D:\Projects\Assignments\AssignmentC#\Mail\Mail\bin\Debug\Mail.exe.config
+D:\Projects\Assignments\AssignmentC#\Mail\Mail\bin\Debug\Mail.exe
+D:\Projects\Assignments\AssignmentC#\Mail\Mail\bin\Debug\Mail.pdb
+D:\Projects\Assignments\AssignmentC#\Mail\Mail\obj\Debug\Mail.csproj.AssemblyReference.cache
+D:\Projects\Assignments\AssignmentC#\Mail\Mail\obj\Debug\Mail.csproj.SuggestedBindingRedirects.cache
+D:\Projects\Assignments\AssignmentC#\Mail\Mail\obj\Debug\Mail.csproj.CoreCompileInputs.cache
+D:\Projects\Assignments\AssignmentC#\Mail\Mail\obj\Debug\Mail.exe
+D:\Projects\Assignments\AssignmentC#\Mail\Mail\obj\Debug\Mail.pdb
