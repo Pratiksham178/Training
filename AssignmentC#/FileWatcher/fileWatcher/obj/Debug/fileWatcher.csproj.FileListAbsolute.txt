@@ -1,0 +1,8 @@
+C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\bin\Debug\fileWatcher.exe.config
+C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\bin\Debug\fileWatcher.exe
+C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\bin\Debug\fileWatcher.pdb
+C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.csproj.AssemblyReference.cache
+C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.csproj.SuggestedBindingRedirects.cache
+C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.csproj.CoreCompileInputs.cache
+C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.exe
+C:\Users\pratiksham\source\repos\fileWatcher\fileWatcher\obj\Debug\fileWatcher.pdb

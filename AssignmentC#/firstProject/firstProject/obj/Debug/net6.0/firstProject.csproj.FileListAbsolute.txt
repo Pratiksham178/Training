@@ -1,0 +1,15 @@
+C:\Users\pratiksham\source\repos\firstProject\firstProject\bin\Debug\net6.0\firstProject.exe
+C:\Users\pratiksham\source\repos\firstProject\firstProject\bin\Debug\net6.0\firstProject.deps.json
+C:\Users\pratiksham\source\repos\firstProject\firstProject\bin\Debug\net6.0\firstProject.runtimeconfig.json
+C:\Users\pratiksham\source\repos\firstProject\firstProject\bin\Debug\net6.0\firstProject.dll
+C:\Users\pratiksham\source\repos\firstProject\firstProject\bin\Debug\net6.0\firstProject.pdb
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\firstProject.csproj.AssemblyReference.cache
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\firstProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\firstProject.AssemblyInfoInputs.cache
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\firstProject.AssemblyInfo.cs
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\firstProject.csproj.CoreCompileInputs.cache
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\firstProject.dll
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\refint\firstProject.dll
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\firstProject.pdb
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\firstProject.genruntimeconfig.cache
+C:\Users\pratiksham\source\repos\firstProject\firstProject\obj\Debug\net6.0\ref\firstProject.dll
