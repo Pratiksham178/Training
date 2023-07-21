@@ -14,14 +14,15 @@ namespace ADO_NET
 
         public static void inserttable(MySqlConnection con)
         {
-                //MySqlCommand sde = new MySqlCommand("select * from country_table;", con);
-                Console.WriteLine("Enter the country id");
-                var countryId = Console.ReadLine();
-                Console.WriteLine("Enter the country name");
-                var country_name = Console.ReadLine();
-                Console.WriteLine("Enter the country abbr");
-                var country_abbr = Console.ReadLine();
-                using (MySqlCommand sde = new MySqlCommand($"Insert into country_table values('{countryId}','{country_name}','{country_abbr}')", con))
+            Console.WriteLine("Enter the country id");
+            var countryId = Console.ReadLine();
+            Console.WriteLine("Enter the country name");
+            var country_name = Console.ReadLine();
+            Console.WriteLine("Enter the country abbr");
+            var country_abbr = Console.ReadLine();
+            using (MySqlCommand sde = new MySqlCommand($"Insert into country_table values('{countryId}','{country_name}','{country_abbr}')", con))
+            {
+                try
                 {
                     var result = sde.ExecuteNonQuery();
                     if (result == 1)
@@ -32,15 +33,19 @@ namespace ADO_NET
                     {
                         Console.WriteLine("Data Not Inserted");
                     }
-                };
-                return;
+                }catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+                    
+            };
+            return;
             
         }
         public static void update(MySqlConnection con)
         {
-                Console.WriteLine("Enter the country id of country you want to update");
-                var countryIdchange = Console.ReadLine();
-                using (MySqlCommand select = new MySqlCommand($"select * from country_table where countryId={countryIdchange};", con))
+            Console.WriteLine("Enter the country id of country you want to update");
+            var countryIdchange = Console.ReadLine();
+            using (MySqlCommand select = new MySqlCommand($"select * from country_table where countryId={countryIdchange};", con))
+            {
+                try
                 {
                     DataTable dataTable = new DataTable();
                     using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(select))
@@ -52,11 +57,15 @@ namespace ADO_NET
                         Console.WriteLine($"{num["countryId"]} | {num["country_name"]} | {num["country_abbr"]}");
                     }
                 }
-                Console.WriteLine("Enter the new country name");
-                var country_namechange = Console.ReadLine();
-                Console.WriteLine("Enter the new country abbr");
-                var country_abbrchange = Console.ReadLine();
-                using (MySqlCommand update = new MySqlCommand($"update country_table set country_name='{country_namechange}',country_abbr='{country_abbrchange}' where countryId={countryIdchange};", con))
+                catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+            }
+            Console.WriteLine("Enter the new country name");
+            var country_namechange = Console.ReadLine();
+            Console.WriteLine("Enter the new country abbr");
+            var country_abbrchange = Console.ReadLine();
+            using (MySqlCommand update = new MySqlCommand($"update country_table set country_name='{country_namechange}',country_abbr='{country_abbrchange}' where countryId={countryIdchange};", con))
+            {
+                try
                 {
                     var result = update.ExecuteNonQuery();
                     if (result == 1)
@@ -67,13 +76,16 @@ namespace ADO_NET
                     {
                         Console.WriteLine("Data Not Inserted");
                     }
-                }
-                return;
+                }catch (Exception ex) { Console.WriteLine(ex.ToString()); }
+            }
+            return;
             
         }
         public static void showtable(MySqlConnection con)
         {
-                using (MySqlCommand select = new MySqlCommand("select * from country_table;", con))
+            using (MySqlCommand select = new MySqlCommand("select * from country_table;", con))
+            {
+                try
                 {
                     DataTable dataTable = new DataTable();
                     using (MySqlDataAdapter dataAdapter = new MySqlDataAdapter(select))
@@ -82,12 +94,14 @@ namespace ADO_NET
                     }
                     foreach (DataRow num in dataTable.Rows)
                     {
-                    Console.WriteLine($"{num["countryId"]} | {num["country_name"]} | {num["country_abbr"]}");
+                        Console.WriteLine($"{num["countryId"]} | {num["country_name"]} | {num["country_abbr"]}");
+                    }
                 }
-            }
+                catch (Exception ex) { Console.WriteLine(ex.Message); }
                 Console.WriteLine("");
                 Console.ReadLine();
                 return;
+            }
             
         }
         public static void Main()
