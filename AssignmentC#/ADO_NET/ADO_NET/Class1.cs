@@ -12,11 +12,8 @@ namespace ADO_NET
     {
         static string connectionString = "server=127.0.0.1;uid=root;pwd=mindfire;database=profileapplication";
 
-        public static void inserttable()
+        public static void inserttable(MySqlConnection con)
         {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
                 //MySqlCommand sde = new MySqlCommand("select * from country_table;", con);
                 Console.WriteLine("Enter the country id");
                 var countryId = Console.ReadLine();
@@ -36,15 +33,11 @@ namespace ADO_NET
                         Console.WriteLine("Data Not Inserted");
                     }
                 };
-                con.Close();
                 return;
-            }
+            
         }
-        public static void update()
+        public static void update(MySqlConnection con)
         {
-            using (var con = new MySqlConnection(connectionString))
-            {
-                con.Open();
                 Console.WriteLine("Enter the country id of country you want to update");
                 var countryIdchange = Console.ReadLine();
                 using (MySqlCommand select = new MySqlCommand($"select * from country_table where countryId={countryIdchange};", con))
@@ -56,7 +49,7 @@ namespace ADO_NET
                     }
                     foreach (DataRow num in dataTable.Rows)
                     {
-                        Console.WriteLine($"{num["countryId"]} , {num["country_name"]}");
+                        Console.WriteLine($"{num["countryId"]} | {num["country_name"]} | {num["country_abbr"]}");
                     }
                 }
                 Console.WriteLine("Enter the new country name");
@@ -75,9 +68,8 @@ namespace ADO_NET
                         Console.WriteLine("Data Not Inserted");
                     }
                 }
-                con.Close();
                 return;
-            }
+            
         }
         public static void showtable(MySqlConnection con)
         {
@@ -90,9 +82,9 @@ namespace ADO_NET
                     }
                     foreach (DataRow num in dataTable.Rows)
                     {
-                        Console.WriteLine($"{num["countryId"]} , {num["country_name"]}");
-                    }
+                    Console.WriteLine($"{num["countryId"]} | {num["country_name"]} | {num["country_abbr"]}");
                 }
+            }
                 Console.WriteLine("");
                 Console.ReadLine();
                 return;
@@ -113,10 +105,10 @@ namespace ADO_NET
                         showtable(con);
                         break;
                     case 2:
-                        inserttable();
+                        inserttable(con);
                         break;
                     case 3:
-                        update();
+                        update(con);
                         break;
                     default:
                         break;
