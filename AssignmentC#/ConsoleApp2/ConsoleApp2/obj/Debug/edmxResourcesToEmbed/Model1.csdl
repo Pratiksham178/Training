@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProfileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="country_table">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country_abbr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="state_table" Relationship="ProfileModel.FK_state_table_country_table" FromRole="country_table" ToRole="state_table" />
+  </EntityType>
+  <EntityType Name="state_table">
+    <Key>
+      <PropertyRef Name="stateId" />
+    </Key>
+    <Property Name="stateId" Type="Int32" Nullable="false" />
+    <Property Name="state_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="countryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="country_table" Relationship="ProfileModel.FK_state_table_country_table" FromRole="state_table" ToRole="country_table" />
+  </EntityType>
+  <EntityType Name="userroletable">
+    <Key>
+      <PropertyRef Name="userRoleId" />
+    </Key>
+    <Property Name="userRoleId" Type="Int32" Nullable="false" />
+    <Property Name="userRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="userroleforuser">
+    <Key>
+      <PropertyRef Name="userRoleId" />
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userRoleId" Type="Int32" Nullable="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ProfileEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="country_table" EntityType="Self.country_table" />
+    <EntitySet Name="state_table" EntityType="Self.state_table" />
+    <EntitySet Name="userroletables" EntityType="Self.userroletable" />
+    <EntitySet Name="userroleforusers" EntityType="Self.userroleforuser" />
+    <AssociationSet Name="FK_state_table_country_table" Association="ProfileModel.FK_state_table_country_table">
+      <End Role="country_table" EntitySet="country_table" />
+      <End Role="state_table" EntitySet="state_table" />
+    </AssociationSet>
+    <FunctionImport Name="getState" ReturnType="Collection(ProfileModel.getState_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="selectstate1" ReturnType="Collection(ProfileModel.selectstate1_Result)" />
+  </EntityContainer>
+  <Association Name="FK_state_table_country_table">
+    <End Type="ProfileModel.country_table" Role="country_table" Multiplicity="1" />
+    <End Type="ProfileModel.state_table" Role="state_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country_table">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="state_table">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="getState_Result">
+    <Property Type="Int32" Name="stateId" Nullable="false" />
+    <Property Type="String" Name="state_name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="countryId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="selectstate1_Result">
+    <Property Type="Int32" Name="stateId" Nullable="false" />
+    <Property Type="String" Name="state_name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="countryId" Nullable="false" />
+  </ComplexType>
+</Schema>

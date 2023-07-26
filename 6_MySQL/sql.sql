@@ -43,3 +43,9 @@ add constraint foreign key (stateId) references state_table(stateId);
 
 alter table userroleforuser
 add constraint primary key(userRoleId,userId);
+
+select * from country_table;
+
+call printcountry("IN");
+
+select countState("India");
