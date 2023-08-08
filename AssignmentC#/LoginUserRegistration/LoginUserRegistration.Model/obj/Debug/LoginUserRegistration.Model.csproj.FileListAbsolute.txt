@@ -1,0 +1,6 @@
+D:\Projects\Assignments\AssignmentC#\LoginUserRegistration\LoginUserRegistration.Model\bin\Debug\LoginUserRegistration.Model.dll
+D:\Projects\Assignments\AssignmentC#\LoginUserRegistration\LoginUserRegistration.Model\bin\Debug\LoginUserRegistration.Model.pdb
+D:\Projects\Assignments\AssignmentC#\LoginUserRegistration\LoginUserRegistration.Model\obj\Debug\LoginUserRegistration.Model.csproj.AssemblyReference.cache
+D:\Projects\Assignments\AssignmentC#\LoginUserRegistration\LoginUserRegistration.Model\obj\Debug\LoginUserRegistration.Model.csproj.CoreCompileInputs.cache
+D:\Projects\Assignments\AssignmentC#\LoginUserRegistration\LoginUserRegistration.Model\obj\Debug\LoginUserRegistration.Model.dll
+D:\Projects\Assignments\AssignmentC#\LoginUserRegistration\LoginUserRegistration.Model\obj\Debug\LoginUserRegistration.Model.pdb

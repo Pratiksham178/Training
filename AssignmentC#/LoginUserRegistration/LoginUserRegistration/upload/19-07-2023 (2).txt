@@ -1,0 +1,6 @@
+Renamed :
+Old: D:\Projects\Assignments\AssignmentC#\FileWatcher\hi.txt.txt 
+New: D:\Projects\Assignments\AssignmentC#\FileWatcher\hhhhhhhhh.txt.txt
+at 16:17:06.2650142Deleted : D:\Projects\Assignments\AssignmentC#\FileWatcher\h.txt.txt
+at 16:18:37.9478415Deleted : D:\Projects\Assignments\AssignmentC#\FileWatcher\hhhhhhhhh.txt.txt
+at 16:18:44.5333405

@@ -1,13 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registrationform.aspx.cs" Inherits="WebApplication4.WebForm4" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registrationform.aspx.cs" Inherits="WebApplication4.WebForm4" MasterPageFile="~/Site.Master" %>
 
-<!DOCTYPE html>
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <form id="form1" runat="server">
+    <main>
         <div>
             <table class="auto-style1">
                 <tr>
@@ -62,7 +57,7 @@
             </table>
             <asp:Label ID="message" runat="server" Font-Size="Medium" ForeColor="Red"></asp:Label>
         </div>
-    </form>
+        </form>
     <table class="auto-style1">
         <tr>
             <td class="auto-style2">
@@ -89,5 +84,5 @@
                 <asp:Label ID="ShowCourses" runat="server"></asp:Label></td>
         </tr>
     </table>
-</body>  
-</html>
+    </main>
+</asp:Content>

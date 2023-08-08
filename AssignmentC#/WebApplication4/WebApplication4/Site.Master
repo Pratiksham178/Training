@@ -24,6 +24,10 @@
         .auto-style3 {  
             width: 121px;  
         }  
+        #update_form{
+            display:none;
+            background-color:aliceblue;
+        }        
     </style>  
 
 </head>

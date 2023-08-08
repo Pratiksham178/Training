@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ProfileModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Profile.dbo.Company' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="country_table">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="int" Nullable="false" />
+          <Property Name="Country_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Country_abbr" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Profile.dbo.Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="CompanyId" Type="int" />
+        </EntityType>
+        <EntityType Name="notes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="objectID" Type="int" Nullable="false" />
+          <Property Name="objectType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="objectNote" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="state_table">
+          <Key>
+            <PropertyRef Name="stateId" />
+          </Key>
+          <Property Name="stateId" Type="int" Nullable="false" />
+          <Property Name="state_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="countryId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="user_table">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="firstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="lastName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="countryId" Type="int" Nullable="false" />
+          <Property Name="stateId" Type="int" Nullable="false" />
+          <Property Name="AddressLine1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AddressLine2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="zipcode" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Profile.dbo.userroleforuser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="userroleforuser">
+          <Key>
+            <PropertyRef Name="userRoleId" />
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userRoleId" Type="int" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="userroletable">
+          <Key>
+            <PropertyRef Name="userRoleId" />
+          </Key>
+          <Property Name="userRoleId" Type="int" Nullable="false" />
+          <Property Name="userRole" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_state_table_country_table">
+          <End Role="country_table" Type="Self.country_table" Multiplicity="1" />
+          <End Role="state_table" Type="Self.state_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country_table">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="state_table">
+              <PropertyRef Name="countryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_table_country_table">
+          <End Role="country_table" Type="Self.country_table" Multiplicity="1" />
+          <End Role="user_table" Type="Self.user_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country_table">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="user_table">
+              <PropertyRef Name="countryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_table_state_table">
+          <End Role="state_table" Type="Self.state_table" Multiplicity="1" />
+          <End Role="user_table" Type="Self.user_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state_table">
+              <PropertyRef Name="stateId" />
+            </Principal>
+            <Dependent Role="user_table">
+              <PropertyRef Name="stateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userroleforuser_user_table">
+          <End Role="user_table" Type="Self.user_table" Multiplicity="1" />
+          <End Role="userroleforuser" Type="Self.userroleforuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user_table">
+              <PropertyRef Name="userId" />
+            </Principal>
+            <Dependent Role="userroleforuser">
+              <PropertyRef Name="userId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userroleforuser_userroletable">
+          <End Role="userroletable" Type="Self.userroletable" Multiplicity="1" />
+          <End Role="userroleforuser" Type="Self.userroleforuser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="userroletable">
+              <PropertyRef Name="userRoleId" />
+            </Principal>
+            <Dependent Role="userroleforuser">
+              <PropertyRef Name="userRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="getState" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="selectstate1" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="ProfileModelStoreContainer">
+          <EntitySet Name="country_table" EntityType="Self.country_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="notes" EntityType="Self.notes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="state_table" EntityType="Self.state_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="user_table" EntityType="Self.user_table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userroletable" EntityType="Self.userroletable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Company].[ID] AS [ID], 
+    [Company].[CompanyName] AS [CompanyName]
+    FROM [dbo].[Company] AS [Company]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Employee" EntityType="Self.Employee" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Employee].[ID] AS [ID], 
+    [Employee].[Name] AS [Name], 
+    [Employee].[CompanyId] AS [CompanyId]
+    FROM [dbo].[Employee] AS [Employee]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="userroleforuser" EntityType="Self.userroleforuser" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [userroleforuser].[userRoleId] AS [userRoleId], 
+    [userroleforuser].[userId] AS [userId]
+    FROM [dbo].[userroleforuser] AS [userroleforuser]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_state_table_country_table" Association="Self.FK_state_table_country_table">
+            <End Role="country_table" EntitySet="country_table" />
+            <End Role="state_table" EntitySet="state_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_table_country_table" Association="Self.FK_user_table_country_table">
+            <End Role="country_table" EntitySet="country_table" />
+            <End Role="user_table" EntitySet="user_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_table_state_table" Association="Self.FK_user_table_state_table">
+            <End Role="state_table" EntitySet="state_table" />
+            <End Role="user_table" EntitySet="user_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userroleforuser_user_table" Association="Self.FK_userroleforuser_user_table">
+            <End Role="user_table" EntitySet="user_table" />
+            <End Role="userroleforuser" EntitySet="userroleforuser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userroleforuser_userroletable" Association="Self.FK_userroleforuser_userroletable">
+            <End Role="userroletable" EntitySet="userroletable" />
+            <End Role="userroleforuser" EntitySet="userroleforuser" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProfileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="country_table">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" />
+          <Property Name="Country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country_abbr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="state_table" Relationship="Self.FK_state_table_country_table" FromRole="country_table" ToRole="state_table" />
+          <NavigationProperty Name="user_table" Relationship="Self.FK_user_table_country_table" FromRole="country_table" ToRole="user_table" />
+        </EntityType>
+        <EntityType Name="state_table">
+          <Key>
+            <PropertyRef Name="stateId" />
+          </Key>
+          <Property Name="stateId" Type="Int32" Nullable="false" />
+          <Property Name="state_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="countryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="country_table" Relationship="Self.FK_state_table_country_table" FromRole="state_table" ToRole="country_table" />
+          <NavigationProperty Name="user_table" Relationship="Self.FK_user_table_state_table" FromRole="state_table" ToRole="user_table" />
+        </EntityType>
+        <EntityType Name="user_table">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="countryId" Type="Int32" Nullable="false" />
+          <Property Name="stateId" Type="Int32" Nullable="false" />
+          <Property Name="AddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="country_table" Relationship="Self.FK_user_table_country_table" FromRole="user_table" ToRole="country_table" />
+          <NavigationProperty Name="state_table" Relationship="Self.FK_user_table_state_table" FromRole="user_table" ToRole="state_table" />
+          <NavigationProperty Name="userroletables" Relationship="Self.userroleforuser" FromRole="user_table" ToRole="userroletable" />
+        </EntityType>
+        <EntityType Name="userroletable">
+          <Key>
+            <PropertyRef Name="userRoleId" />
+          </Key>
+          <Property Name="userRoleId" Type="Int32" Nullable="false" />
+          <Property Name="userRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="user_table" Relationship="Self.userroleforuser" FromRole="userroletable" ToRole="user_table" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CompanyId" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_state_table_country_table">
+          <End Role="country_table" Type="Self.country_table" Multiplicity="1" />
+          <End Role="state_table" Type="Self.state_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country_table">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="state_table">
+              <PropertyRef Name="countryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_table_country_table">
+          <End Role="country_table" Type="Self.country_table" Multiplicity="1" />
+          <End Role="user_table" Type="Self.user_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="country_table">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="user_table">
+              <PropertyRef Name="countryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_user_table_state_table">
+          <End Role="state_table" Type="Self.state_table" Multiplicity="1" />
+          <End Role="user_table" Type="Self.user_table" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state_table">
+              <PropertyRef Name="stateId" />
+            </Principal>
+            <Dependent Role="user_table">
+              <PropertyRef Name="stateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="userroleforuser">
+          <End Role="user_table" Type="Self.user_table" Multiplicity="*" />
+          <End Role="userroletable" Type="Self.userroletable" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ProfileEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="country_table" EntityType="Self.country_table" />
+          <EntitySet Name="state_table" EntityType="Self.state_table" />
+          <EntitySet Name="user_table" EntityType="Self.user_table" />
+          <EntitySet Name="userroletables" EntityType="Self.userroletable" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <AssociationSet Name="FK_state_table_country_table" Association="Self.FK_state_table_country_table">
+            <End Role="country_table" EntitySet="country_table" />
+            <End Role="state_table" EntitySet="state_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_table_country_table" Association="Self.FK_user_table_country_table">
+            <End Role="country_table" EntitySet="country_table" />
+            <End Role="user_table" EntitySet="user_table" />
+          </AssociationSet>
+          <AssociationSet Name="FK_user_table_state_table" Association="Self.FK_user_table_state_table">
+            <End Role="state_table" EntitySet="state_table" />
+            <End Role="user_table" EntitySet="user_table" />
+          </AssociationSet>
+          <AssociationSet Name="userroleforuser" Association="Self.userroleforuser">
+            <End Role="user_table" EntitySet="user_table" />
+            <End Role="userroletable" EntitySet="userroletables" />
+          </AssociationSet>
+          <FunctionImport Name="getState" ReturnType="Collection(ProfileModel.getState_Result)">
+          <Parameter Name="Id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="selectstate1" ReturnType="Collection(ProfileModel.selectstate1_Result)" />
+          <EntitySet Name="notes" EntityType="ProfileModel.note" />
+        </EntityContainer>
+        <ComplexType Name="getState_Result">
+          <Property Type="Int32" Name="stateId" Nullable="false" />
+          <Property Type="String" Name="state_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="countryId" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="selectstate1_Result">
+          <Property Type="Int32" Name="stateId" Nullable="false" />
+          <Property Type="String" Name="state_name" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="countryId" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="note">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="objectID" Type="Int32" Nullable="false" />
+          <Property Name="objectType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="objectNote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProfileModelStoreContainer" CdmEntityContainer="ProfileEntities">
+          <EntitySetMapping Name="country_table">
+            <EntityTypeMapping TypeName="ProfileModel.country_table">
+              <MappingFragment StoreEntitySet="country_table">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Country_name" ColumnName="Country_name" />
+                <ScalarProperty Name="Country_abbr" ColumnName="Country_abbr" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="state_table">
+            <EntityTypeMapping TypeName="ProfileModel.state_table">
+              <MappingFragment StoreEntitySet="state_table">
+                <ScalarProperty Name="stateId" ColumnName="stateId" />
+                <ScalarProperty Name="state_name" ColumnName="state_name" />
+                <ScalarProperty Name="countryId" ColumnName="countryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="user_table">
+            <EntityTypeMapping TypeName="ProfileModel.user_table">
+              <MappingFragment StoreEntitySet="user_table">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="countryId" ColumnName="countryId" />
+                <ScalarProperty Name="stateId" ColumnName="stateId" />
+                <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+                <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userroletables">
+            <EntityTypeMapping TypeName="ProfileModel.userroletable">
+              <MappingFragment StoreEntitySet="userroletable">
+                <ScalarProperty Name="userRoleId" ColumnName="userRoleId" />
+                <ScalarProperty Name="userRole" ColumnName="userRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="ProfileModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="ProfileModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="userroleforuser" TypeName="ProfileModel.userroleforuser" StoreEntitySet="userroleforuser">
+            <EndProperty Name="user_table">
+              <ScalarProperty Name="userId" ColumnName="userId" />
+            </EndProperty>
+            <EndProperty Name="userroletable">
+              <ScalarProperty Name="userRoleId" ColumnName="userRoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="getState" FunctionName="ProfileModel.Store.getState">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProfileModel.getState_Result">
+                <ScalarProperty Name="stateId" ColumnName="stateId" />
+                <ScalarProperty Name="state_name" ColumnName="state_name" />
+                <ScalarProperty Name="countryId" ColumnName="countryId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="selectstate1" FunctionName="ProfileModel.Store.selectstate1">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ProfileModel.selectstate1_Result">
+                <ScalarProperty Name="stateId" ColumnName="stateId" />
+                <ScalarProperty Name="state_name" ColumnName="state_name" />
+                <ScalarProperty Name="countryId" ColumnName="countryId" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="notes">
+            <EntityTypeMapping TypeName="ProfileModel.note">
+              <MappingFragment StoreEntitySet="notes">
+                <ScalarProperty Name="objectNote" ColumnName="objectNote" />
+                <ScalarProperty Name="objectType" ColumnName="objectType" />
+                <ScalarProperty Name="objectID" ColumnName="objectID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

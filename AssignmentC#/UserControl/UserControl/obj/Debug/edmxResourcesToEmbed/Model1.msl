@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProfileModelStoreContainer" CdmEntityContainer="ProfileEntities">
+    <EntitySetMapping Name="country_table">
+      <EntityTypeMapping TypeName="ProfileModel.country_table">
+        <MappingFragment StoreEntitySet="country_table">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="Country_name" ColumnName="Country_name" />
+          <ScalarProperty Name="Country_abbr" ColumnName="Country_abbr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="state_table">
+      <EntityTypeMapping TypeName="ProfileModel.state_table">
+        <MappingFragment StoreEntitySet="state_table">
+          <ScalarProperty Name="stateId" ColumnName="stateId" />
+          <ScalarProperty Name="state_name" ColumnName="state_name" />
+          <ScalarProperty Name="countryId" ColumnName="countryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="user_table">
+      <EntityTypeMapping TypeName="ProfileModel.user_table">
+        <MappingFragment StoreEntitySet="user_table">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="countryId" ColumnName="countryId" />
+          <ScalarProperty Name="stateId" ColumnName="stateId" />
+          <ScalarProperty Name="AddressLine1" ColumnName="AddressLine1" />
+          <ScalarProperty Name="AddressLine2" ColumnName="AddressLine2" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="zipcode" ColumnName="zipcode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userroletables">
+      <EntityTypeMapping TypeName="ProfileModel.userroletable">
+        <MappingFragment StoreEntitySet="userroletable">
+          <ScalarProperty Name="userRoleId" ColumnName="userRoleId" />
+          <ScalarProperty Name="userRole" ColumnName="userRole" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="ProfileModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="ProfileModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="userroleforuser" TypeName="ProfileModel.userroleforuser" StoreEntitySet="userroleforuser">
+      <EndProperty Name="user_table">
+        <ScalarProperty Name="userId" ColumnName="userId" />
+      </EndProperty>
+      <EndProperty Name="userroletable">
+        <ScalarProperty Name="userRoleId" ColumnName="userRoleId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="getState" FunctionName="ProfileModel.Store.getState">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProfileModel.getState_Result">
+          <ScalarProperty Name="stateId" ColumnName="stateId" />
+          <ScalarProperty Name="state_name" ColumnName="state_name" />
+          <ScalarProperty Name="countryId" ColumnName="countryId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="selectstate1" FunctionName="ProfileModel.Store.selectstate1">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProfileModel.selectstate1_Result">
+          <ScalarProperty Name="stateId" ColumnName="stateId" />
+          <ScalarProperty Name="state_name" ColumnName="state_name" />
+          <ScalarProperty Name="countryId" ColumnName="countryId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="notes">
+      <EntityTypeMapping TypeName="ProfileModel.note">
+        <MappingFragment StoreEntitySet="notes">
+          <ScalarProperty Name="objectNote" ColumnName="objectNote" />
+          <ScalarProperty Name="objectType" ColumnName="objectType" />
+          <ScalarProperty Name="objectID" ColumnName="objectID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

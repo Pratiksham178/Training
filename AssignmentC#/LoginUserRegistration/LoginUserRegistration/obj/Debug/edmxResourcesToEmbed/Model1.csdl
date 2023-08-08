@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProfileModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="country_list">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="countryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="country_table">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" />
+    <Property Name="Country_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Country_abbr" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="state_table" Relationship="Self.FK_state_table_country_table" FromRole="country_table" ToRole="state_table" />
+    <NavigationProperty Name="user_table" Relationship="Self.FK_user_table_country_table" FromRole="country_table" ToRole="user_table" />
+  </EntityType>
+  <EntityType Name="Hobby_table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="hobby" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="language_table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="language" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="note_table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="visible" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="notes">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="objectID" Type="Int32" Nullable="false" />
+    <Property Name="objectType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="objectNote" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="state_table">
+    <Key>
+      <PropertyRef Name="stateId" />
+    </Key>
+    <Property Name="stateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="state_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="countryId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="country_table" Relationship="Self.FK_state_table_country_table" FromRole="state_table" ToRole="country_table" />
+    <NavigationProperty Name="user_table" Relationship="Self.FK_user_table_state_table" FromRole="state_table" ToRole="user_table" />
+  </EntityType>
+  <EntityType Name="statelist_table">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="stateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="countryID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="user_table">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="firstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="countryId" Type="Int32" Nullable="false" />
+    <Property Name="stateId" Type="Int32" Nullable="false" />
+    <Property Name="AddressLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="AddressLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="zipcode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="country_table" Relationship="Self.FK_user_table_country_table" FromRole="user_table" ToRole="country_table" />
+    <NavigationProperty Name="state_table" Relationship="Self.FK_user_table_state_table" FromRole="user_table" ToRole="state_table" />
+  </EntityType>
+  <EntityType Name="userDetails">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="AddressLine1Permanent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddressLine2Permanent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CityPermanent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatePermanent" Type="Int32" Nullable="false" />
+    <Property Name="CountryPermanent" Type="Int32" Nullable="false" />
+    <Property Name="ZipcodePermanent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddressLine1Present" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AddressLine2Present" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CityPresent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StatePresent" Type="Int32" Nullable="false" />
+    <Property Name="CountryPresent" Type="Int32" Nullable="false" />
+    <Property Name="ZipcodePresent" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="userrolerelation">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="roleID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="userroletable">
+    <Key>
+      <PropertyRef Name="userRoleId" />
+    </Key>
+    <Property Name="userRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CompanyId" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_state_table_country_table">
+    <End Role="country_table" Type="Self.country_table" Multiplicity="1" />
+    <End Role="state_table" Type="Self.state_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country_table">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="state_table">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_table_country_table">
+    <End Role="country_table" Type="Self.country_table" Multiplicity="1" />
+    <End Role="user_table" Type="Self.user_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="country_table">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="user_table">
+        <PropertyRef Name="countryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_user_table_state_table">
+    <End Role="state_table" Type="Self.state_table" Multiplicity="1" />
+    <End Role="user_table" Type="Self.user_table" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="state_table">
+        <PropertyRef Name="stateId" />
+      </Principal>
+      <Dependent Role="user_table">
+        <PropertyRef Name="stateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProfileEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="country_list" EntityType="Self.country_list" />
+    <EntitySet Name="country_table" EntityType="Self.country_table" />
+    <EntitySet Name="Hobby_table" EntityType="Self.Hobby_table" />
+    <EntitySet Name="language_table" EntityType="Self.language_table" />
+    <EntitySet Name="note_table" EntityType="Self.note_table" />
+    <EntitySet Name="notes" EntityType="Self.notes" />
+    <EntitySet Name="state_table" EntityType="Self.state_table" />
+    <EntitySet Name="statelist_table" EntityType="Self.statelist_table" />
+    <EntitySet Name="user_table" EntityType="Self.user_table" />
+    <EntitySet Name="userDetails" EntityType="Self.userDetails" />
+    <EntitySet Name="userrolerelation" EntityType="Self.userrolerelation" />
+    <EntitySet Name="userroletable" EntityType="Self.userroletable" />
+    <EntitySet Name="Company" EntityType="Self.Company" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <AssociationSet Name="FK_state_table_country_table" Association="Self.FK_state_table_country_table">
+      <End Role="country_table" EntitySet="country_table" />
+      <End Role="state_table" EntitySet="state_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_table_country_table" Association="Self.FK_user_table_country_table">
+      <End Role="country_table" EntitySet="country_table" />
+      <End Role="user_table" EntitySet="user_table" />
+    </AssociationSet>
+    <AssociationSet Name="FK_user_table_state_table" Association="Self.FK_user_table_state_table">
+      <End Role="state_table" EntitySet="state_table" />
+      <End Role="user_table" EntitySet="user_table" />
+    </AssociationSet>
+    <FunctionImport Name="getState" ReturnType="Collection(ProfileModel.getState_Result)">
+      <Parameter Name="Id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="selectstate1" ReturnType="Collection(ProfileModel.selectstate1_Result)" />
+    <EntitySet Name="filelist" EntityType="ProfileModel.filelist" />
+  </EntityContainer>
+  <ComplexType Name="getState_Result">
+    <Property Type="Int32" Name="stateId" Nullable="false" />
+    <Property Type="String" Name="state_name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="countryId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="selectstate1_Result">
+    <Property Type="Int32" Name="stateId" Nullable="false" />
+    <Property Type="String" Name="state_name" Nullable="false" MaxLength="50" />
+    <Property Type="Int32" Name="countryId" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="filelist">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userID" Type="Int32" Nullable="false" />
+    <Property Name="filename" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

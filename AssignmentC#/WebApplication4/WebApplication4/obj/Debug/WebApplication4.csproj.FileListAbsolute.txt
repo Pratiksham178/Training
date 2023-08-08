@@ -71,3 +71,7 @@ D:\Projects\Assignments\AssignmentC#\WebApplication4\WebApplication4\obj\Debug\W
 D:\Projects\Assignments\AssignmentC#\WebApplication4\WebApplication4\obj\Debug\WebApplication4.csproj.CopyComplete
 D:\Projects\Assignments\AssignmentC#\WebApplication4\WebApplication4\obj\Debug\WebApplication4.dll
 D:\Projects\Assignments\AssignmentC#\WebApplication4\WebApplication4\obj\Debug\WebApplication4.pdb
+D:\Projects\Assignments\AssignmentC#\WebApplication4\WebApplication4\bin\EntityFramework.dll
+D:\Projects\Assignments\AssignmentC#\WebApplication4\WebApplication4\bin\EntityFramework.SqlServer.dll
+D:\Projects\Assignments\AssignmentC#\WebApplication4\WebApplication4\bin\EntityFramework.xml
+D:\Projects\Assignments\AssignmentC#\WebApplication4\WebApplication4\bin\EntityFramework.SqlServer.xml
