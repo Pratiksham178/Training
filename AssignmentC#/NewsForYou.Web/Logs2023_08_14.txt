@@ -1,0 +1,18 @@
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 80
+
+------------------------------------------------------------------------------------
+Error - 
+System.Data.Entity.Validation.DbEntityValidationException: Validation failed for one or more entities. See 'EntityValidationErrors' property for more details.
+   at System.Data.Entity.Internal.InternalContext.SaveChanges()
+   at NewsForYou.DAL.DBAccess.StoreAllDataInNews(List`1 NewsInfo) in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 60
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 80
+

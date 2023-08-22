@@ -18,7 +18,7 @@
 
         data.forEach(function (item) {
             console.log(item["userID"]);
-            var newrow = divRow.replace("ID", item['userID']).replace("First Name", item['firstName']).replace("Last Name", item['lastName']).replace("Email", item['email']).replace("UserRole", item['userRole']).replace("Hobbies", item['hobbies']).replace("Languages Known", item['languages']).replace("fillId", item["userID"]);
+            var newrow = divRow.replace("ID", item['userID']).replace("First Name", item['firstName']).replace("Last Name", item['lastName']).replace("Email", item['email']).replace("UserRole", item['userRole']).replace("Hobbies", item['hobbies']).replace("Languages Known", item['languages']).replace("fillId", item['userID']);
             $("#userDetailTable").append(newrow);
         })
     }
@@ -38,7 +38,7 @@
         }
     });
     $("#userDetailTable").on('click', 'button', function () {
-        var userid = $(this).attr("userId");
+        var userid = parseInt($(this).attr("userId"));
         var location = "Form.aspx?userId=" + userid;
         window.location.href = location;
     })

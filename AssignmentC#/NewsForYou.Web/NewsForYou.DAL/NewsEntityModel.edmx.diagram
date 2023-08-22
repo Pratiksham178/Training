@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="14a07ae4c8a04d0495ce242c2dd4072e" Name="Diagram1">
+        <EntityTypeShape EntityType="NewsForYouModel.AgencyDetails" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsForYouModel.AgencyFeed" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsForYouModel.Category" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsForYouModel.NewsDetails" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsForYouModel.Table_1" Width="1.5" PointX="2.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsForYouModel.UserDetails" Width="1.5" PointX="0.75" PointY="7.375" IsExpanded="true" />
+        <AssociationConnector Association="NewsForYouModel.FK_AgencyFeed_AgencyDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsForYouModel.FK_News_AgencyDetails" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsForYouModel.FK_AgencyFeed_Category" ManuallyRouted="false" />
+        <AssociationConnector Association="NewsForYouModel.FK_News_Category" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

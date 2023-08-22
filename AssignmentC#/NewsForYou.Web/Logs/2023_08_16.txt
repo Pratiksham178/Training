@@ -1,0 +1,78 @@
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+
+------------------------------------------------------------------------------------
+Error - 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.Max[TSource](IEnumerable`1 source)
+   at NewsForYou.DAL.DBAccess.GetAllLastDate() in D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.DAL\DBAccess.cs:line 103
+

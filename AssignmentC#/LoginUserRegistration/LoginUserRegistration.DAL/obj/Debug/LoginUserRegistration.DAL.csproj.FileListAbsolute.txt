@@ -1,0 +1,2 @@
+D:\Projects\Assignments\AssignmentC#\LoginUserRegistration\LoginUserRegistration.DAL\obj\Debug\LoginUserRegistration.DAL.csproj.AssemblyReference.cache
+D:\Projects\Assignments\AssignmentC#\LoginUserRegistration\LoginUserRegistration.DAL\obj\Debug\LoginUserRegistration.DAL.csproj.CoreCompileInputs.cache

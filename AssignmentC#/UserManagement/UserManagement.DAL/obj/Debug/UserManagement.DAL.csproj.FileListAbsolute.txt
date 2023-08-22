@@ -1,0 +1,14 @@
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\obj\Debug\UserManagement.DAL.csproj.AssemblyReference.cache
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\obj\Debug\UserManagement.DAL.csproj.CoreCompileInputs.cache
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\UserManagement.DAL.dll.config
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\UserManagement.DAL.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\UserManagement.DAL.pdb
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\EntityFramework.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\UserManagement.Model.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\UserManagement.Model.pdb
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\EntityFramework.xml
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\obj\Debug\UserManagement.DAL.csproj.CopyComplete
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\obj\Debug\UserManagement.DAL.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.DAL\obj\Debug\UserManagement.DAL.pdb

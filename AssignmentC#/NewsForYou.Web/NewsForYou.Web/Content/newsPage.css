@@ -1,0 +1,200 @@
+﻿body {
+    font-family: 'Varela Round', sans-serif;
+}
+.loading-gif{
+    width:200px;
+    height:200px;
+    margin-left:40vw;
+    margin-top:20vh;
+}
+/*Slide-show*/
+.slideshow-container {
+    position: relative;
+    margin: auto;
+    cursor: pointer;
+}
+.each-news-in-slide {
+    display: none;
+}
+button{
+    cursor:pointer;
+}
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+}
+.title {
+    color: #f2f2f2;
+    font-family: 'Varela Round', sans-serif;
+    font-size: 20px;
+    position: absolute;
+    width: 100%;
+    bottom: 5px;
+    background: linear-gradient(to top, rgb(0, 0, 0,1) 22%, rgb(0, 0, 0,0.9) 40%, rgb(0, 0, 0,0.8) 60%, rgb(0, 0, 0,0.7) 70%, rgb(0, 0, 0,0.6) 100%) ;
+    height: 15vh;
+}
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+.each-image-in-slideshow {
+    height: 99.35vh;
+    object-fit: fill;
+    overflow: hidden;
+    width: 100%;
+}
+.agency-image{
+    width:2vw;
+    height:2.5vh;
+}
+.dot {
+    height: 10px;
+    width: 10px;
+    background-color: #f2f2f2;
+    border-radius: 50%;
+    display: inline-block;
+}
+.view-number{
+    font-size:12px;
+}
+.agency-name {
+    font-size: 14px;
+}
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+
+
+/*categories part*/
+.category-btn, .categories-header {
+    width: 15vw;
+    height: 8vh;
+    background-color: white;
+    color: black;
+    font-size: 18px;
+    font-family: 'Varela Round', sans-serif;
+    border: 0px;
+    border-right: 1px solid black;
+}
+.categories-btns{
+    display:none;
+}
+.categories-header {
+    padding: 10px;
+}
+.category-btn:hover {
+    background-color: black;
+    border-right: 1px solid white;
+    color: white;
+}
+.all-news {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    width:95%;
+    column-gap:30px;
+    margin:auto
+}
+
+.news-container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 22%;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.image-box {
+    width: 95%;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+
+.image-box img {
+    width: 95%;
+    border-radius: 8px;
+    height:23vh;
+}
+
+.title-box {
+    width: 95%;
+    padding: 10px;
+}
+/*alert box*/
+.refreshpage-alertbox {
+    width: 25vw;
+    height: 20vh;
+    color: black;
+    top: 10px;
+    z-index: 100;
+    position: fixed;
+    padding: 20px;
+    background-color: #F8F8F8;
+    left: 40%;
+    display: none;
+    box-shadow: 2px 2px 10px 10px rgb(40, 40, 40,0.5);
+}
+.cross-btn {
+    background-color: #E8E8E8;
+    color: red;
+    font-size: 18px;
+    border: 0px;
+    float: right;
+}
+.message-alertbox{
+    margin-top:20px;
+    padding:10px
+}
+
+/*Pagination*/
+.pagination-btns-div{
+    margin-left:30%;
+    width:40%;
+}
+.pagination-btn {
+    width: 3vw;
+    height: 3vh;
+    background-color: white;
+    border: 1px solid black;
+    margin: 2px;
+    font-family: 'Varela Round', sans-serif;
+}
+.alter-pageno-btn {
+    width: 3vw;
+    height: 4vh;
+    background-color: white;
+    border: 1px solid black;
+    margin: 2px;
+    font-family: 'Varela Round', sans-serif;
+}
+.pagination-btn:hover {
+    background-color: black;
+    color: white;
+}
+

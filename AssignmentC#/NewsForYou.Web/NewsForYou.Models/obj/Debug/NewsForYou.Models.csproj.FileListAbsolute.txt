@@ -1,0 +1,6 @@
+D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.Models\bin\Debug\NewsForYou.Models.dll
+D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.Models\bin\Debug\NewsForYou.Models.pdb
+D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.Models\obj\Debug\NewsForYou.Models.csproj.AssemblyReference.cache
+D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.Models\obj\Debug\NewsForYou.Models.csproj.CoreCompileInputs.cache
+D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.Models\obj\Debug\NewsForYou.Models.dll
+D:\Projects\Assignments\AssignmentC#\NewsForYou.Web\NewsForYou.Models\obj\Debug\NewsForYou.Models.pdb

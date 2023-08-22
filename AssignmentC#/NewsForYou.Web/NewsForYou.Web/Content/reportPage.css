@@ -1,0 +1,72 @@
+﻿body {
+    font-family: 'Varela Round', sans-serif;
+}
+.loading-gif {
+    width: 200px;
+    height: 200px;
+    margin-left: 40vw;
+    margin-top: 20vh;
+    display: none;
+}
+.row-header, .row-body {
+    display: flex;
+    flex-direction: row;
+    width: 90vw;
+    margin: auto;
+}
+.row-header {
+    height: 8vh;
+    margin-top:20px;
+}
+.row-body {
+    height:7vh;
+}
+.row-header div {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    border-right: 1px solid white;
+}
+.agency-name {
+    width: 20vw;
+    padding: 5px;
+}
+.title{
+    width:70vw;
+    padding:5px;
+}
+.views {
+    width: 10vw;
+    text-align: center;
+}
+.generate-report-div{
+    width:55vw;
+    margin:auto;
+}
+.date-input {
+    width: 20vw;
+    height: 4vh;
+    font-family: 'Varela Round', sans-serif;
+    padding:10px;
+    border:1px solid grey;
+    border-radius:8px;
+}
+.generate-report-btn {
+    width: 15vw;
+    height: 5vh;
+    font-family: 'Varela Round', sans-serif;
+    background-color: black;
+    color: white;
+    border: 0px;
+    border-radius: 8px;
+}
+.download-pdf-btn {
+    width: 13vw;
+    height: 5vh;
+    font-family: 'Varela Round', sans-serif;
+    background-color: red;
+    color: white;
+    border: 0px;
+    border-radius: 8px;
+    display:none;
+}

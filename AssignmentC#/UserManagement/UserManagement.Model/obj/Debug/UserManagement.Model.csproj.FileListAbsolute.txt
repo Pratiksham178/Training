@@ -1,0 +1,6 @@
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Model\bin\Debug\UserManagement.Model.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Model\bin\Debug\UserManagement.Model.pdb
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Model\obj\Debug\UserManagement.Model.csproj.AssemblyReference.cache
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Model\obj\Debug\UserManagement.Model.csproj.CoreCompileInputs.cache
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Model\obj\Debug\UserManagement.Model.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Model\obj\Debug\UserManagement.Model.pdb

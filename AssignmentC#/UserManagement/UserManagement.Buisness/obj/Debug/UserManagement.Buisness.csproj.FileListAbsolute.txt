@@ -1,0 +1,16 @@
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.Buisness.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.Buisness.pdb
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.DAL.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.Model.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\EntityFramework.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.DAL.pdb
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.DAL.dll.config
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.Model.pdb
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\EntityFramework.xml
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\obj\Debug\UserManagement.Buisness.csproj.AssemblyReference.cache
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\obj\Debug\UserManagement.Buisness.csproj.CoreCompileInputs.cache
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\obj\Debug\UserManagement.Buisness.csproj.CopyComplete
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\obj\Debug\UserManagement.Buisness.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\obj\Debug\UserManagement.Buisness.pdb
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.Util.dll
+D:\Projects\Assignments\AssignmentC#\UserManagement\UserManagement.Buisness\bin\Debug\UserManagement.Util.pdb
