@@ -48,27 +48,30 @@ namespace NewsForYou.DAL
                     {
                         if (New.NewsPublishDateTime != null && New.NewsLink != null && New.NewsTitle != null)
                         {
-
-                            NewsDetails news = new NewsDetails();
-                            try
+                            if (New.NewsPublishDateTime > DBAccess.GetAllLastDate())
                             {
-                                news.NewsTitle = New.NewsTitle;
-                                news.NewsDescription = New.NewsDescription;
-                                news.NewsPublishDateTime = New.NewsPublishDateTime;
-                                news.AgencyId = New.AgencyId;
-                                news.CategoryId = New.CategoryId;
-                                news.NewsLink = New.NewsLink;
-                                news.ClickCount = New.ClickCount;
-                                news.NewsImageLink = New.NewsImageLink;
-                                dbcontext.NewsDetails.Add(news);
-                                dbcontext.SaveChanges();
+                                NewsDetails news = new NewsDetails();
+                                try
+                                {
+                                    news.NewsTitle = New.NewsTitle;
+                                    news.NewsDescription = New.NewsDescription;
+                                    news.NewsPublishDateTime = New.NewsPublishDateTime;
+                                    news.AgencyId = New.AgencyId;
+                                    news.CategoryId = New.CategoryId;
+                                    news.NewsLink = New.NewsLink;
+                                    news.ClickCount = New.ClickCount;
+                                    news.NewsImageLink = New.NewsImageLink;
+                                    dbcontext.NewsDetails.Add(news);
+                                    dbcontext.SaveChanges();
+
+                                }
+                                catch (Exception ex)
+                                {
+                                    Utilities.WriteLog(ex.ToString());
+                                };
 
                             }
-                            catch (Exception ex)
-                            {
-                                Utilities.WriteLog(ex.ToString());
-                            };
-                                
+
                         }
                     }
 

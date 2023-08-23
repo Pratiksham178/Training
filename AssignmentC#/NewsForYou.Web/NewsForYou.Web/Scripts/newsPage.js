@@ -95,20 +95,22 @@ $(document).ready(function () {
             }
         })
     }
-
     $("#slideShowNews").on('click','div', (e) => {
         OnClickViewNews($(e.target).attr("NewsID"));
     })
     $("#newsBoxId").on('click', '.news-container', function(e) {
         OnClickViewNews($(this).attr("newsID"))
     });
+
     //on hover css for the news container
+
     $("#newsBoxId").on('mouseover', '.news-container', function () {
         $(this).css({ "background-color":"#d6d6c2"})
     });
     $("#newsBoxId").on('mouseout', '.news-container', function () {
         $(this).css({ "background-color": "white" })
     });
+
     //news container data & pagination
     function GetTime(t) {
         var count = 0;
@@ -189,7 +191,7 @@ $(document).ready(function () {
             AddNewsInBox();
             $("#newsBoxId")[0].scrollIntoView({
                 behavior: "smooth",
-                block: "center",
+                block: "start",
             });
         }
         

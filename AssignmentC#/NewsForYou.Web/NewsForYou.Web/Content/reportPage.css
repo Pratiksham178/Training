@@ -1,6 +1,9 @@
 ﻿body {
     font-family: 'Varela Round', sans-serif;
 }
+button{
+    cursor:pointer;
+}
 .loading-gif {
     width: 200px;
     height: 200px;
@@ -13,6 +16,7 @@
     flex-direction: row;
     width: 90vw;
     margin: auto;
+    font-size:15px;
 }
 .row-header {
     height: 8vh;
@@ -24,7 +28,7 @@
 .row-header div {
     background-color: black;
     color: white;
-    font-size: 20px;
+    font-size: 3vh;
     border-right: 1px solid white;
 }
 .agency-name {
@@ -40,19 +44,19 @@
     text-align: center;
 }
 .generate-report-div{
-    width:55vw;
+    width:70vw;
     margin:auto;
 }
 .date-input {
     width: 20vw;
-    height: 4vh;
+    height: 3vh;
     font-family: 'Varela Round', sans-serif;
-    padding:10px;
+    padding:5px;
     border:1px solid grey;
     border-radius:8px;
 }
 .generate-report-btn {
-    width: 15vw;
+    width: 13vw;
     height: 5vh;
     font-family: 'Varela Round', sans-serif;
     background-color: black;
@@ -69,4 +73,81 @@
     border: 0px;
     border-radius: 8px;
     display:none;
+}
+.backhome-btn {
+    background-color: black;
+    color: white;
+    width: 5vw;
+    font-size: 2vh;
+    height: 5vh;
+    font-family: 'Varela Round', sans-serif;
+    border: 0px;
+    border-radius: 8px;
+}
+
+@media only screen and (max-width:650px) and (max-height:900px){
+    .row-header div {
+        background-color: black;
+        color: white;
+        font-size: 15px;
+        border-right: 1px solid white;
+    }
+    .row-header {
+        height: 9vh;
+        margin-top: 20px;
+    }
+
+    .row-body {
+        height: 13vh;
+        font-size: 17px;
+    }
+
+}
+@media only screen and (max-width:850px){
+
+    .generate-report-div {
+        width: 100%;
+        margin: auto;
+    }
+
+    .date-input {
+        width: 25vw;
+        height: 3vh;
+        font-family: 'Varela Round', sans-serif;
+        padding: 5px;
+        border: 1px solid grey;
+        border-radius: 8px;
+    }
+
+    .generate-report-btn {
+        width: 35vw;
+        height: 5vh;
+        font-family: 'Varela Round', sans-serif;
+        background-color: black;
+        color: white;
+        border: 0px;
+        border-radius: 8px;
+    }
+
+    .download-pdf-btn {
+        width: 20vw;
+        height: 5vh;
+        font-family: 'Varela Round', sans-serif;
+        background-color: red;
+        color: white;
+        border: 0px;
+        border-radius: 8px;
+        display: none;
+    }
+
+    .backhome-btn {
+        background-color: black;
+        color: white;
+        width: 5vw;
+        font-size: 2vh;
+        height: 5vh;
+        font-family: 'Varela Round', sans-serif;
+        border: 0px;
+        border-radius: 8px;
+    }
 }

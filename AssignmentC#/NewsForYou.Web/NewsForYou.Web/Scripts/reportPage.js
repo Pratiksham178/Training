@@ -64,4 +64,7 @@ $(document).ready(function () {
     })
     var todaydate = new Date(Date.now())
     $("#reportDate").attr("max", todaydate.toISOString().substring(0, 10));
+    $("#backToHome").click(function () {
+        window.location.href = "NewsPage.aspx"
+    })
 });

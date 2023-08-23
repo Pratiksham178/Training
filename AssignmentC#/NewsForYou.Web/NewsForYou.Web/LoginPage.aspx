@@ -8,9 +8,7 @@
      <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <link rel="stylesheet" href="./content/login.css" />
-    <script src="/Scripts/loginPage.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<%=NewsForYou.Util.Utilities.UpdateFileName("/content/login.css")%>" />
     <title></title>
 </head>
 <body>
@@ -39,5 +37,9 @@
             </div>
                </div>
         </div>
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <script src="<%=NewsForYou.Util.Utilities.UpdateFileName("/Scripts/loginPage.js")%>" type="text/javascript"></script>
+
 </body>
 </html>

@@ -9,15 +9,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="./content/reportPage.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="./Scripts/reportPage.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="<%=NewsForYou.Util.Utilities.UpdateFileName("/content/reportPage.css")%>" />
+
     <title></title>
 </head>
 <body>
      
 
         <div class="generate-report-div">
+            <button type="button" id="backToHome" class="backhome-btn"><i class="fa fa-angle-double-left"></i></button>
             <input type="date" id="reportDate" placeholder="Select Date" class="date-input"/>
             <button type="button" class="generate-report-btn" id="generateReportBtn">Generate Report</button>
             <button type="button" id="downloadReportBtn" class="download-pdf-btn">Download</button>
@@ -27,5 +27,7 @@
         <div class="report-table" id="reportTable">
             
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <script src="<%=NewsForYou.Util.Utilities.UpdateFileName("/Scripts/reportPage.js")%>" type="text/javascript"></script>
 </body>
 </html>

@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="./content/navBar.css" />
-     <link rel="stylesheet" href="./content/newsPage.css" />
+    <link rel="stylesheet" href="<%=NewsForYou.Util.Utilities.UpdateFileName("/content/navBar.css")%>" />
+     <link rel="stylesheet" href="<%=NewsForYou.Util.Utilities.UpdateFileName("/content/newsPage.css")%>" />
 
    
     <title></title>
@@ -37,7 +37,7 @@
 
     </div>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="./Scripts/navBar.js" type="text/javascript"></script>
-    <script src="./Scripts/newsPage.js" type="text/javascript"></script>
+    <script src="<%=NewsForYou.Util.Utilities.UpdateFileName("/Scripts/navBar.js")%>" type="text/javascript"></script>
+    <script src="<%=NewsForYou.Util.Utilities.UpdateFileName("/Scripts/newsPage.js")%>" type="text/javascript"></script>
 </body>
 </html>

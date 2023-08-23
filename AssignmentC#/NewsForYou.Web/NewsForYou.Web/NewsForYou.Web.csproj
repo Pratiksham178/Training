@@ -140,6 +140,7 @@
     <Content Include="Content\reportPage.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="LoginPage.aspx" />
@@ -236,6 +237,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="GeneratePDF.ashx.cs">
       <DependentUpon>GeneratePDF.ashx</DependentUpon>
     </Compile>
@@ -316,6 +324,10 @@
     <ProjectReference Include="..\NewsForYou.Models\NewsForYou.Models.csproj">
       <Project>{5828caef-fee6-4526-9672-12b5cba14b85}</Project>
       <Name>NewsForYou.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NewsForYou.Util\NewsForYou.Util.csproj">
+      <Project>{1f3e62f5-4f88-4c15-913d-7cf9cfe792b9}</Project>
+      <Name>NewsForYou.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

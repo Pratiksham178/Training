@@ -15,7 +15,6 @@ namespace NewsForYou.Business
         public static void AddDataToDB()
         {
             List<AgencyFeedDetails> Feedlist = DBAccess.GetAllFeedData();
-            DateTime LastDate = DBAccess.GetAllLastDate();
             List<NewsDetail> NewsInfo = new List<NewsDetail>();
             foreach (var Feed in Feedlist)
             {
@@ -27,7 +26,6 @@ namespace NewsForYou.Business
                     if(Feed.AgencyId == 1)
                     {
                          var eachfeed = (from x in xDoc.Descendants("item")
-                                        where Convert.ToDateTime(x.Element("pubDate").Value) > LastDate
                                         select new
                                         {
                                             NewsTitle = x.Element("title").Value,
@@ -61,7 +59,6 @@ namespace NewsForYou.Business
                         {
                             XNamespace mediaNamespace = "http://search.yahoo.com/mrss/";
                             var eachfeed = (from x in xDoc.Descendants("item")
-                                            where Convert.ToDateTime(x.Element("pubDate").Value) > LastDate
                                             select new
                                             {
                                                 NewsTitle = x.Element("title").Value,
