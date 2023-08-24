@@ -177,8 +177,8 @@ button{
 
 /*Pagination*/
 .pagination-btns-div{
-    margin-left:30%;
-    width:40%;
+    margin:auto;
+    width:50%;
 }
 .pagination-btn {
     width: 3vw;
