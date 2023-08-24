@@ -19,27 +19,19 @@ namespace NewsForYou.DAL
         public static List<AgencyFeedDetails> GetAllFeedData()
         {
             List<AgencyFeedDetails> AgencyFeedDetails = new List<AgencyFeedDetails>();
-            try
+            using (var dbcontext = new NewsForYouEntities())
             {
-                using (var dbcontext = new NewsForYouEntities())
+                var feeds = dbcontext.AgencyFeed.ToList();
+                foreach (var feed in feeds)
                 {
-                    var feeds = dbcontext.AgencyFeed.ToList();
-                    foreach (var feed in feeds)
-                    {
-                        var AgencyFeed = new AgencyFeedDetails();
-                        AgencyFeed.AgencyFeedURL = feed.AgencyFeedURL;
-                        AgencyFeed.CategoryId = feed.CategoryId;
-                        AgencyFeed.AgencyId = feed.AgencyId;
-                        AgencyFeedDetails.Add(AgencyFeed);
-                    }
-                    
+                    var AgencyFeed = new AgencyFeedDetails();
+                    AgencyFeed.AgencyFeedURL = feed.AgencyFeedURL;
+                    AgencyFeed.CategoryId = feed.CategoryId;
+                    AgencyFeed.AgencyId = feed.AgencyId;
+                    AgencyFeedDetails.Add(AgencyFeed);
                 }
+                    
             }
-            catch (Exception ex)
-            {
-                Utilities.WriteLog(ex);
-            }
-
             return AgencyFeedDetails;
         }
 
@@ -49,9 +41,7 @@ namespace NewsForYou.DAL
         /// <param name="NewsInfo"></param>
         public static void StoreAllDataInNews(List<NewsDetail> NewsInfo)
         {
-            try
-            {
-                using (var dbcontext = new NewsForYouEntities())
+               using (var dbcontext = new NewsForYouEntities())
                 {
                     foreach (var New in NewsInfo)
                     {
@@ -85,13 +75,6 @@ namespace NewsForYou.DAL
                     }
 
                 }
-            }
-            catch (Exception e)
-            {
-                
-                Utilities.WriteLog(e);
-
-            }
         }
 
         /// <summary>
@@ -103,14 +86,8 @@ namespace NewsForYou.DAL
             using (var dbcontext = new NewsForYouEntities())
             {
                 DateTime maxtime= new DateTime();
-                try{
-                    var NewsLinkList = dbcontext.NewsDetails.Select((i) => i.NewsPublishDateTime).ToList();
-
-                    if (NewsLinkList != null) { maxtime = NewsLinkList.Max(); }
-                }catch(Exception ex)
-                {
-                    Utilities.WriteLog(ex);
-                }
+                var NewsLinkList = dbcontext.NewsDetails.Select((i) => i.NewsPublishDateTime).ToList();
+                if (NewsLinkList != null) { maxtime = NewsLinkList.Max(); }                
                 return maxtime;
                
             }
@@ -124,33 +101,24 @@ namespace NewsForYou.DAL
         public static List<LoginDetail> Login()
         {
             List<LoginDetail> userLogins = new List<LoginDetail>();
-            try
+            using (var dbcontext = new NewsForYouEntities())
             {
-                using (var dbcontext = new NewsForYouEntities())
+                var allusers = dbcontext.UserDetails.Select((i) => new
                 {
-                    var allusers = dbcontext.UserDetails.Select((i) => new
-                    {
-                        i.UserId,
-                        i.Email,
-                        i.Password,
+                    i.UserId,
+                    i.Email,
+                    i.Password,
 
-                    }).ToList();
-                    foreach (var oneuser in allusers)
-                    {
-                        LoginDetail newuser = new LoginDetail();
-                        newuser.UserId = oneuser.UserId;
-                        newuser.Email = oneuser.Email;
-                        newuser.Password = oneuser.Password;
-                        userLogins.Add(newuser);
-                    }
+                }).ToList();
+                foreach (var oneuser in allusers)
+                {
+                    LoginDetail newuser = new LoginDetail();
+                    newuser.UserId = oneuser.UserId;
+                    newuser.Email = oneuser.Email;
+                    newuser.Password = oneuser.Password;
+                    userLogins.Add(newuser);
                 }
-
-            }catch(Exception ex)
-            {
-                Utilities.WriteLog(ex);
             }
-
-
             return userLogins;
         }
 
@@ -160,8 +128,7 @@ namespace NewsForYou.DAL
         /// <returns>list of news</returns>
         public static List<NewsDetail> GetAllNewsFromDB() {
             List<NewsDetail> allNews = new List<NewsDetail>();
-            try
-            {
+            
                 using (var dbcontext = new NewsForYouEntities())
                 {
                     var allNewsData = dbcontext.NewsDetails.OrderByDescending((i) => i.NewsPublishDateTime).ToList();
@@ -182,10 +149,7 @@ namespace NewsForYou.DAL
                         allNews.Add(news);
                     }
                 }
-            }catch(Exception ex)
-            {
-                Utilities.WriteLog(ex);
-            }
+           
            
             return allNews;
         }
@@ -198,8 +162,7 @@ namespace NewsForYou.DAL
         public static string IncreaseClickCountAndReturnLinkUsingDB(int id)
         {
             string link="";
-            try
-            {
+            
                 using (var dbcontext = new NewsForYouEntities())
                 {
                     var news = dbcontext.NewsDetails.Where((i) => i.NewsId == id).FirstOrDefault();
@@ -208,11 +171,7 @@ namespace NewsForYou.DAL
                     dbcontext.SaveChanges();
                    
                 }
-            }
-            catch(Exception ex)
-            {
-                Utilities.WriteLog(ex);
-            }
+            
             return link;
         }
 
@@ -223,8 +182,7 @@ namespace NewsForYou.DAL
         public static List<CategoryList> GetAllCategoriesUsingDB()
         {
             List<CategoryList> categories = new List<CategoryList>();
-            try
-            {
+            
                 using (var dbcontext = new NewsForYouEntities())
                 {
 
@@ -238,10 +196,7 @@ namespace NewsForYou.DAL
                     }
                     
                 }
-            }catch(Exception ex)
-            {
-                Utilities.WriteLog(ex);
-            }
+           
             return categories;
         }
 
@@ -254,8 +209,7 @@ namespace NewsForYou.DAL
         {
             var reqdate = Convert.ToDateTime(date);
             List<Report> allreports = new List<Report>();
-            try
-            {
+            
                 using (var dbcontext = new NewsForYouEntities())
                 {
                     var reports = dbcontext.NewsDetails.OrderByDescending((i) => i.ClickCount).ToList();
@@ -273,10 +227,7 @@ namespace NewsForYou.DAL
                     }
 
                 }
-            }catch(Exception ex)
-            {
-                Utilities.WriteLog(ex);
-            }
+            
            
             return allreports;
         }
@@ -286,17 +237,12 @@ namespace NewsForYou.DAL
         /// </summary>
         public static void DeleteAndAddDetails()
         {
-            try
+            string allcommands = "truncate table UserDetails;\r\ntruncate table AgencyDetails;\r\ntruncate table AgencyFeed;\r\ntruncate table NewsDetails;\r\ntruncate table category;\r\n\r\nInsert into UserDetails VALUES('Pratiksha','liti624@gmail.com','user123');\r\n\r\nInsert into Category VALUES('Sports');\r\nInsert into Category VALUES('Buisness');\r\nInsert into Category VALUES('Science');\r\nInsert into Category VALUES('Technology');\r\nInsert into Category VALUES('Entertainment');\r\n\r\nInsert into AgencyDetails VALUES('Times Of India','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuty-_X3M9IZzIDeQ0DnNHt586bdkJj89YsK916FdY_g&s');\r\nInsert into AgencyDetails VALUES('Hindustan Times','https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Hindustan_Times_logo.svg/2560px-Hindustan_Times_logo.svg.png');\r\nInsert into AgencyDetails VALUES('The Hindu','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0aWed20B0g8QUr_olPUnJetlhvnrjOjBpByhuaprmopBgLyZN3rIb74pX9urhxBeAKGo&usqp=CAU');\r\n\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/4719148.cms',1,1);\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/1898055.cms',1,2);\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms',1,3);\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/66949542.cms',1,4);\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms',1,5);\r\n\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/sports/rssfeed.xml',2,1);\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/business/rssfeed.xml',2,2);\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/science/rssfeed.xml',2,3);\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/technology/rssfeed.xml',2,4);\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/web-stories/entertainment/rssfeed.xml',2,5);\r\n\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/sport/feeder/default.rss',3,1);\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/business/feeder/default.rss',3,2);\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/sci-tech/science/feeder/default.rss',3,3);\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/sci-tech/technology/feeder/default.rss',3,4);\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/entertainment/feeder/default.rss',3,5);";
+            using (var dbcontext = new NewsForYouEntities())
             {
-                string allcommands = "truncate table UserDetails;\r\ntruncate table AgencyDetails;\r\ntruncate table AgencyFeed;\r\ntruncate table NewsDetails;\r\ntruncate table category;\r\n\r\nInsert into UserDetails VALUES('Pratiksha','liti624@gmail.com','user123');\r\n\r\nInsert into Category VALUES('Sports');\r\nInsert into Category VALUES('Buisness');\r\nInsert into Category VALUES('Science');\r\nInsert into Category VALUES('Technology');\r\nInsert into Category VALUES('Entertainment');\r\n\r\nInsert into AgencyDetails VALUES('Times Of India','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuty-_X3M9IZzIDeQ0DnNHt586bdkJj89YsK916FdY_g&s');\r\nInsert into AgencyDetails VALUES('Hindustan Times','https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Hindustan_Times_logo.svg/2560px-Hindustan_Times_logo.svg.png');\r\nInsert into AgencyDetails VALUES('The Hindu','https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0aWed20B0g8QUr_olPUnJetlhvnrjOjBpByhuaprmopBgLyZN3rIb74pX9urhxBeAKGo&usqp=CAU');\r\n\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/4719148.cms',1,1);\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/1898055.cms',1,2);\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/-2128672765.cms',1,3);\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/66949542.cms',1,4);\r\nInsert into AgencyFeed VALUES('https://timesofindia.indiatimes.com/rssfeeds/1081479906.cms',1,5);\r\n\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/sports/rssfeed.xml',2,1);\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/business/rssfeed.xml',2,2);\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/science/rssfeed.xml',2,3);\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/technology/rssfeed.xml',2,4);\r\nInsert into AgencyFeed VALUES('https://www.hindustantimes.com/feeds/rss/web-stories/entertainment/rssfeed.xml',2,5);\r\n\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/sport/feeder/default.rss',3,1);\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/business/feeder/default.rss',3,2);\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/sci-tech/science/feeder/default.rss',3,3);\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/sci-tech/technology/feeder/default.rss',3,4);\r\nInsert into AgencyFeed VALUES('https://www.thehindu.com/entertainment/feeder/default.rss',3,5);";
-                using (var dbcontext = new NewsForYouEntities())
-                {
-                    int x = dbcontext.Database.ExecuteSqlCommand(allcommands);
-                }
-            }catch(Exception ex)
-            {
-                Utilities.WriteLog(ex);
+                int x = dbcontext.Database.ExecuteSqlCommand(allcommands);
             }
+           
             
         }
     }
