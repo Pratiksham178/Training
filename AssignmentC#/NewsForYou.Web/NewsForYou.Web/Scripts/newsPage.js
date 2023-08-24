@@ -248,6 +248,7 @@ $(document).ready(function () {
         }
 
         btnboxnumber = 1;
+        page = 1;
         AddAllNews();
         
         
