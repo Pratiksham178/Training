@@ -19,6 +19,7 @@ $(document).ready(function () {
         success: function (response) {
             sessionId = response.d
             if (sessionId == -1) {
+                alert("Please Login!");
                 window.location.href = "LoginPage.aspx";
             }
         },
