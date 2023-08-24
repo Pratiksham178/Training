@@ -212,7 +212,7 @@ button{
 
     /*categories part*/
     .category-btn, .categories-header {
-        width: vw;
+        width: 20vw;
         height: 8vh;
         background-color: white;
         color: black;
