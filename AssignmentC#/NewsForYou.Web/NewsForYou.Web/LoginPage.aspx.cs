@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NewsForYou.Models;
 using NewsForYou.Business;
+using NewsForYou.Util;
 namespace NewsForYou.Web
 {
     public partial class LoginPage : System.Web.UI.Page
@@ -20,19 +21,43 @@ namespace NewsForYou.Web
         [WebMethod]
         public static List<LoginDetail> GetLoginDetails()
         {
-            return BusinessClass.Logindetails();
+            try
+            {
+                return BusinessClass.Logindetails();
+
+            }catch(Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
+            return null;
         }
 
         [WebMethod]
         public static void StoreSession(int userId)
         {
-            HttpContext.Current.Session["id"]= userId;
+            try
+            {
+                HttpContext.Current.Session["id"] = userId;
+
+            }
+            catch (Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
         }
 
         [WebMethod]
         public static void IntializeDetails()
-        {
-            BusinessClass.IntializeAllDetails();
+        { 
+            try
+            {
+                BusinessClass.IntializeAllDetails();
+
+            }catch(Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
+            
         }
     }
 }

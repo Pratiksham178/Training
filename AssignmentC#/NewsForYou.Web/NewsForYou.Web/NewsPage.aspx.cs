@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.EnterpriseServices.Internal;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -25,37 +26,88 @@ namespace NewsForYou.Web
         [WebMethod]
         public static void DeleteSession()
         {
-            HttpContext.Current.Session.Abandon();
+            try
+            {
+                if (Utilities.GetSessionId() != -1)
+                {
+                    HttpContext.Current.Session.Abandon();
+                }
+            }catch(Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
+            
         }
 
         [WebMethod]
         public static List<NewsDetail> GetAllNews()
         {
-            return BusinessClass.GetAllNewsData();
+            try
+            {
+                return BusinessClass.GetAllNewsData();
+            }catch(Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
+            return null;
+            
         }
         [WebMethod]
         public static string IncreaseClickCountAndReturnLink(int id)
         {
-            return BusinessClass.IncreaseClickCountAndReturnLinkFromDB(id);
+            try
+            {
+                return BusinessClass.IncreaseClickCountAndReturnLinkFromDB(id);
+            }catch(Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
+            return null;
         }
         [WebMethod]
         public static List<CategoryList> GetAllCategories()
         {
-            return BusinessClass.GetAllCategoriesFromDB();
+            try
+            {
+                return BusinessClass.GetAllCategoriesFromDB();
+            }
+            catch (Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
+            return null;
         }
 
         [WebMethod]
         public static int GetNewNews()
         {
-            BusinessClass.AddDataToDB();
-            var allnews = BusinessClass.GetAllNewsData();
-            return allnews.ToList().Count();
+            
+            try
+            {
+                BusinessClass.AddDataToDB();
+                var allNews = BusinessClass.GetAllNewsData();
+                return allNews.ToList().Count();
+            }
+            catch (Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
+            return -1;
 
         }
         [WebMethod]
         public static int GetSession()
         {
-            return Utilities.GetSessionId();
+           
+            try
+            {
+                return Utilities.GetSessionId();
+            }
+            catch (Exception ex)
+            {
+                Utilities.WriteLog(ex);
+            }
+            return -1;
         }
     }
 }

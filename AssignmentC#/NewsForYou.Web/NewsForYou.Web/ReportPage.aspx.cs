@@ -11,6 +11,7 @@ using iTextSharp.text.pdf;
 using iTextSharp.text;
 using NewsForYou.Business;
 using NewsForYou.Models;
+using NewsForYou.Util;
 
 namespace NewsForYou.Web
 {
@@ -20,10 +21,28 @@ namespace NewsForYou.Web
         {
 
         }
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
         public static List<Report> AddDataToReport(string date)
         {
-            return BusinessClass.GetReport(date);
+            List<Report> report = new List<Report>();
+            try
+            {
+                if (NewsForYou.Util.Utilities.GetSessionId() != -1)
+                {
+                    return BusinessClass.GetReport(date);
+                }
+                else
+                {
+
+                    return report;
+                }
+            }catch(Exception ex)
+            {
+                NewsForYou.Util.Utilities.WriteLog(ex);
+            }
+            return report;
+            
+            
         }
 
 

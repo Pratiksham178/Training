@@ -12,6 +12,9 @@ namespace NewsForYou.Business
 {
     public class BusinessClass
     {
+        /// <summary>
+        /// Gets data from RSS link and passes them to DBAccess for storage in DB
+        /// </summary>
         public static void AddDataToDB()
         {
             List<AgencyFeedDetails> Feedlist = DBAccess.GetAllFeedData();
@@ -105,27 +108,56 @@ namespace NewsForYou.Business
             DBAccess.StoreAllDataInNews(NewsInfo);
         }
 
+        /// <summary>
+        /// Gets the LoginDetails through DBAccess
+        /// </summary>
+        /// <returns>Login Details</returns>
         public static List<LoginDetail> Logindetails()
         {
             return DBAccess.Login();
         }
+
+        /// <summary>
+        /// Gets the NewsDetails through DBAccess
+        /// </summary>
+        /// <returns></returns>
         public static List<NewsDetail> GetAllNewsData()
         {
             return DBAccess.GetAllNewsFromDB();
         }
+
+        /// <summary>
+        /// Gets the Link through DBAccess and passes the id to increase clickcount toDBAccess
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public static string IncreaseClickCountAndReturnLinkFromDB(int id)
         {
             return DBAccess.IncreaseClickCountAndReturnLinkUsingDB(id);
         }
+
+        /// <summary>
+        /// Returns Categories from DB through DBAccess
+        /// </summary>
+        /// <returns></returns>
         public static List<CategoryList> GetAllCategoriesFromDB()
         {
             return DBAccess.GetAllCategoriesUsingDB();
         }
+
+        /// <summary>
+        /// Returns details for Report from DB through DBAccess
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static List<Report> GetReport(string date)
         {
             return DBAccess.GetReportFromDb(date);
         }
 
+        /// <summary>
+        /// Calls DBAccess to initialize
+        /// </summary>
         public static void IntializeAllDetails()
         {
             DBAccess.DeleteAndAddDetails();

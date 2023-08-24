@@ -15,10 +15,18 @@ namespace NewsForYou.Util
 {
     public class Utilities
     {
-        public static void WriteLog(string exception)
+        /// <summary>
+        /// Writes exception in Log file
+        /// </summary>
+        /// <param name="exception"></param>
+        public static void WriteLog(Exception exception)
         {
             try
             {
+                while (exception.InnerException != null)
+                {
+                    exception = exception.InnerException;
+                }
                 string logFile = ConfigurationManager.AppSettings.Get("pathLogFolder") + "\\" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt";
                 string message = "------------------------------------------------------------------------------------\n";
                 message += "Error - \n";
@@ -32,13 +40,32 @@ namespace NewsForYou.Util
 
         }
 
+        /// <summary>
+        /// Update the filename of JS and CSS by adding last modified date to its name so that
+        /// the user gets the newewst file without ctrl+F5
+        /// </summary>
+        /// <param name="filename"></param>
+        /// <returns>new filename</returns>
         public static string UpdateFileName(string filename)
         {
-            string filePath = HttpContext.Current.Server.MapPath(filename);
-            FileInfo file = new FileInfo(filePath);
-            string newfilename = filename.Split('.')[0] + "-" + file.LastAccessTime.ToString("ddMMyyyyHHmmss") + "-mycustomfile."+ filename.Split('.')[1];
-            return newfilename;
+            try
+            {
+                string filePath = HttpContext.Current.Server.MapPath(filename);
+                FileInfo file = new FileInfo(filePath);
+                string newfilename = filename.Split('.')[0] + "-" + file.LastAccessTime.ToString("ddMMyyyyHHmmss") + "-mycustomfile." + filename.Split('.')[1];
+                return newfilename;
+            }catch(Exception ex)
+            {
+                WriteLog(ex);
+            }
+            return null;
+            
         }
+
+        /// <summary>
+        /// Returns the SessionId
+        /// </summary>
+        /// <returns>sessionId</returns>
         public static int GetSessionId()
         {
 
@@ -57,7 +84,7 @@ namespace NewsForYou.Util
             }
             catch (Exception e)
             {
-                WriteLog(e.Message);
+                WriteLog(e);
             }
             return sessionId;
 

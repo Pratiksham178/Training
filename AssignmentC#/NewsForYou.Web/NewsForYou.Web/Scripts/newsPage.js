@@ -43,6 +43,9 @@ $(document).ready(function () {
                     $("#newMessages").empty().append(`<p class="message-alertbox">${response.d - allnews.length} new news<br>Please refresh the page to get the latest results</p>`)
                     $("#refreshpageAlertbox").css({ "display": "block" })
                 }
+                if (response.d == null){
+                    alert("Some error occured");
+                }
                 
 
             },
@@ -65,12 +68,17 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
-                allnews = response.d.slice();
-                var news = response.d;
-                $(".loading-gif").css({ "display": "none" })
-                $(".categories-btns").css({ "display": "block" });
-                AddSlideShow(news);
-                AddAllNews();
+                if (response.d == null) {
+                    alert("Some error occured")
+                } else {
+                    allnews = response.d.slice();
+                    var news = response.d;
+                    $(".loading-gif").css({ "display": "none" })
+                    $(".categories-btns").css({ "display": "block" });
+                    AddSlideShow(news);
+                    AddAllNews();
+                }
+                
 
             },
             Error: function (response) {
@@ -79,6 +87,7 @@ $(document).ready(function () {
         })
     }
     getNews()
+
     //open news on click
     function OnClickViewNews(id) {
         $.ajax({
@@ -88,7 +97,11 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
-                window.open(response.d, '_blank');
+                if (response.d == null) {
+                    alert("some error occured")
+                } else {
+                    window.open(response.d, '_blank');
+                }
             },
             Error: function (response) {
                 alert(response);
@@ -103,7 +116,6 @@ $(document).ready(function () {
     });
 
     //on hover css for the news container
-
     $("#newsBoxId").on('mouseover', '.news-container', function () {
         $(this).css({ "background-color":"#d6d6c2"})
     });
@@ -112,7 +124,8 @@ $(document).ready(function () {
     });
 
     //news container data & pagination
-    function GetTime(t) {
+
+    function GetTime(t) { ///get time for showing when was the news published
         var count = 0;
         t = t / 1000;
         for (i = 0; i < 3;i++) {
@@ -127,17 +140,17 @@ $(document).ready(function () {
             }
         }
         if (count == 0) {
-            return t + "seconds ago";
+            return t + " seconds ago";
         } else if (count == 1) {
-            return t + "minutes ago";
+            return t + " minutes ago";
         } else if (count == 2) {
-            return t + "hours ago";
+            return t + " hours ago";
         } else if (count == 3) {
-            return t + "days ago";
+            return t + " days ago";
         }
 
     }
-    function AddNewsInBox() {
+    function AddNewsInBox() {  //Addnewsinto the container
         
         if (page * 32 <= shownnews.length) {
             var news = shownnews.slice((page - 1) * 32, page * 32);
@@ -262,7 +275,11 @@ $(document).ready(function () {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {
-            AddCategory(response.d);
+            if (response.d == null) {
+                alert("Some Error occured")
+            } else {
+                AddCategory(response.d);
+            }
         },
         Error: function (response) {
             alert(response);

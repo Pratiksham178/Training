@@ -22,43 +22,47 @@ namespace NewsForYou.Web
 
         public void ProcessRequest(HttpContext context)
         {
-            string date = context.Request.Params["date"];
-            var allreports = BusinessClass.GetReport(date);
-
-            if (allreports.Count() > 0)
+            try
             {
-                using (MemoryStream ms = new MemoryStream())
+                string date = context.Request.Params["date"];
+                var allreports = BusinessClass.GetReport(date);
+
+                if (allreports.Count() > 0)
                 {
-                    Document doc = new Document();
-                    PdfWriter pdf = PdfWriter.GetInstance(doc, ms);
-                    doc.Open();
-                    PdfPTable table = new PdfPTable(3);
-                    table.AddCell("Agency Name");
-                    table.AddCell("Title");
-                    table.AddCell("Views");
-                    foreach (var report in allreports)
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        table.AddCell(report.Agency);
-                        table.AddCell(report.Title);
-                        table.AddCell(report.NoOfClick.ToString());
-                    }
-                    doc.Add(table);
+                        Document doc = new Document();
+                        PdfWriter pdf = PdfWriter.GetInstance(doc, ms);
+                        doc.Open();
+                        PdfPTable table = new PdfPTable(3);
+                        table.AddCell("Agency Name");
+                        table.AddCell("Title");
+                        table.AddCell("Views");
+                        foreach (var report in allreports)
+                        {
+                            table.AddCell(report.Agency);
+                            table.AddCell(report.Title);
+                            table.AddCell(report.NoOfClick.ToString());
+                        }
+                        doc.Add(table);
 
-                    byte[] bytesInStream = ms.ToArray();
-                    ms.Write(bytesInStream, 0, bytesInStream.Length);
-                    doc.Close();
-                    pdf.Close();
-                    context.Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
-                    context.Response.ContentType = "application/pdf";
-                    context.Response.AddHeader("Content-Disposition", "attachment;filename=NewsReport" + date + ".pdf"); context.Response.BinaryWrite(bytesInStream);
+                        byte[] bytesInStream = ms.ToArray();
+                        ms.Write(bytesInStream, 0, bytesInStream.Length);
+                        doc.Close();
+                        pdf.Close();
+                        context.Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
+                        context.Response.ContentType = "application/pdf";
+                        context.Response.AddHeader("Content-Disposition", "attachment;filename=NewsReport" + date + ".pdf"); context.Response.BinaryWrite(bytesInStream);
+                    }
                 }
-            }
-            else
+
+            }catch(Exception ex)
             {
-               
+                NewsForYou.Util.Utilities.WriteLog(ex);
             }
-            
-            
+
+
+
 
         }
 

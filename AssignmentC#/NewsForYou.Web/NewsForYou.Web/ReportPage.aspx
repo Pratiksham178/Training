@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="<%=NewsForYou.Util.Utilities.UpdateFileName("/content/reportPage.css")%>" />
 
-    <title></title>
+    <title>Report Page</title>
 </head>
 <body>
      

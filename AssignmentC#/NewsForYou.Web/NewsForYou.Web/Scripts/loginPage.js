@@ -2,7 +2,8 @@
 var email = [];
 var index;
 $(document).ready(function () {
-    function getusers() {
+    // gets details of users
+    function GetUsers() {
         $.ajax({
             type: "POST",
             url: "LoginPage.aspx/GetLoginDetails",
@@ -21,9 +22,16 @@ $(document).ready(function () {
         });
     }
 
-    getusers();
-    
+    GetUsers();
+
+    //Login
     $("#btnForLogin").click(function () {
+        if ($("#emailLoginTextbox").val()=="") {
+            $("#emailLoginTextbox").css({ "border": "1px solid brown" });
+        }
+        if ($("#passwordLoginTextbox").val() == "") {
+            $("#passwordLoginTextbox").css({ "border": "1px solid brown" });
+        }
         if (user[index]["Password"] === $("#passwordLoginTextbox").val()) {
             userId = user[index]["UserId"];
             $.ajax({
@@ -42,26 +50,30 @@ $(document).ready(function () {
             });
             return false;
         } else {
+            alert("Wrong Password");
             $("#passwordLoginTextbox").css({ "border": "1px solid brown" });
             return false;
         }
     })
 
+    //chack valid email
     $("#emailLoginTextbox").change(function () {
+        email = [];
         user.forEach(function (item) {
-            email.push(item["Email"]);
+            email.push(item["Email"].toLowerCase());
         })
-        if (!(email.includes($("#emailLoginTextbox").val()))) {
+        if (!(email.includes($("#emailLoginTextbox").val().toLowerCase()))) {
             $("#emailLoginTextbox").css({ "border": "1px solid brown" });
             $("#loginBtn").prop("disabled", true);
             alert("Wrong Email");
         } else {
             $("#emailLoginTextbox").css({ "border": "1px solid grey" });
             $("#loginBtn").prop("disabled", false);
-            index = email.indexOf($("#emailLoginTextbox").val());
+            index = email.indexOf($("#emailLoginTextbox").val().toLowerCase());
         }
     })
 
+    //Initialization
     $("#btnForIntialization").click(function(){
         $.ajax({
             type: "POST",
