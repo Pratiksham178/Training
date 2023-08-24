@@ -26,7 +26,7 @@
                 </div>
                 <div class="eachdiv">
                     Password:<br />
-                    <input type="text" id="passwordLoginTextbox" class="input-login" />
+                    <input type="password" id="passwordLoginTextbox" class="input-login" />
                 </div>
                 <div>
                     <button id="btnForLogin" class="btn-submit">Login</button>

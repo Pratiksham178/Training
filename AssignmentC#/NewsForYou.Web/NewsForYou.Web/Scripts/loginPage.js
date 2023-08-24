@@ -54,6 +54,7 @@ $(document).ready(function () {
         if (!(email.includes($("#emailLoginTextbox").val()))) {
             $("#emailLoginTextbox").css({ "border": "1px solid brown" });
             $("#loginBtn").prop("disabled", true);
+            alert("Wrong Email");
         } else {
             $("#emailLoginTextbox").css({ "border": "1px solid grey" });
             $("#loginBtn").prop("disabled", false);
