@@ -26,7 +26,7 @@ namespace NewsForYou.Web
         [WebMethod]
         public static void StoreSession(int userId)
         {
-            HttpContext.Current.Session.Add("id", userId);
+            HttpContext.Current.Session["id"]= userId;
         }
 
         [WebMethod]

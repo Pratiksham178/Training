@@ -8,6 +8,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using NewsForYou.Business;
 using NewsForYou.Models;
+using NewsForYou.Util;
 
 namespace NewsForYou.Web
 {
@@ -50,6 +51,11 @@ namespace NewsForYou.Web
             var allnews = BusinessClass.GetAllNewsData();
             return allnews.ToList().Count();
 
+        }
+        [WebMethod]
+        public static int GetSession()
+        {
+            return Utilities.GetSessionId();
         }
     }
 }

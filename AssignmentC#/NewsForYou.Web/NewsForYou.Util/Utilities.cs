@@ -39,5 +39,28 @@ namespace NewsForYou.Util
             string newfilename = filename.Split('.')[0] + "-" + file.LastAccessTime.ToString("ddMMyyyyHHmmss") + "-mycustomfile."+ filename.Split('.')[1];
             return newfilename;
         }
+        public static int GetSessionId()
+        {
+
+            int sessionId = 0;
+            try
+            {
+                if (HttpContext.Current.Session["id"]!= null)
+                {
+                    sessionId = Convert.ToInt32(HttpContext.Current.Session["id"].ToString());
+                }
+                else
+                {
+                    sessionId = -1;
+                }
+
+            }
+            catch (Exception e)
+            {
+                WriteLog(e.Message);
+            }
+            return sessionId;
+
+        }
     }
 }
