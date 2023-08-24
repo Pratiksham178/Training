@@ -189,7 +189,7 @@ $(document).ready(function () {
             $(this).css({ "background-color": "black", "color": "white" })
             page = $(this).attr("pageNo");
             AddNewsInBox();
-            $("#newsBoxId")[0].scrollIntoView({
+            $("#categories")[0].scrollIntoView({
                 behavior: "smooth",
                 block: "start",
             });
