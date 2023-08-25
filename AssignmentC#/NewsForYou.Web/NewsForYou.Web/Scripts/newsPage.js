@@ -55,7 +55,7 @@ $(document).ready(function () {
         })
         
     }, 300000);
-    $("#crossButtonForAlertbox").click(function () {
+    $("#crossBtnForAlertbox").click(function () {
         $("#refreshpageAlertbox").css({ "display": "none" })
     })
 
@@ -302,7 +302,7 @@ $(document).ready(function () {
         var allcategories = $(".category-btn");
         $.each(allcategories, function (index, value) {
             if (listofcategory.includes($(value).attr("category-id"))) {
-                $(value).css({ "background-color": "black", "color": "white", "border-right": "1px solid black" });
+                $(value).css({ "background-color": "black", "color": "white", "border-right": "1px solid white" });
             }
         })
 

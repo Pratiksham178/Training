@@ -9,16 +9,16 @@ $(document).ready(function () {
         success: function (response) {
             sessionId = response.d
             if (sessionId != -1) {
-                $("#logOut").empty().append('<i class="fa fa-sign-out"></i>');
+                $("#btnForLogOut").empty().append('<i class="fa fa-sign-out"></i>');
             } else {
-                $("#logOut").empty().append('<i class="fa fa-sign-in"></i>');
+                $("#btnForLogOut").empty().append('<i class="fa fa-sign-in"></i>');
             }
         },
         Error: function (response) {
             alert(response);
         }
     })
-    $("#logOut").click(function () {
+    $("#btnForLogOut").click(function () {
         if (sessionId != -1) {
             $.ajax({
                 type: "POST",
@@ -39,7 +39,7 @@ $(document).ready(function () {
         
         
     })
-    $("#generateReport").click(function () {
+    $("#btnForGenerateReport").click(function () {
         
         if (sessionId != -1) {
             window.location.href = "ReportPage.aspx";

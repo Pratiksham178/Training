@@ -39,7 +39,7 @@ $(document).ready(function () {
         $("#generateReportBtn").click(function () {
             $(".loading-gif").css({ "display": "block" })
             $("#downloadReportBtn").css({ "display": "none" })
-            var date = $("#reportDate").val();
+            var date = $("#reportDateInput").val();
             if (date != "") {
                 $("#reportTable").empty()
                 $("#reportDate").css({ "border": "1px solid grey" })
@@ -65,25 +65,25 @@ $(document).ready(function () {
                     }
                 })
             } else {
-                $("#reportDate").css({ "border": "1px solid red" })
+                $("#reportDateInput").css({ "border": "1px solid red" })
             }
 
         })
 
         $("#downloadReportBtn").click(function () {
             $(".loading-gif").css({ "display": "block" })
-            var date = $("#reportDate").val();
+            var date = $("#reportDateInput").val();
             if (date != "") {
                 $(".loading-gif").css({ "display": "none" })
                 window.location.href = "GeneratePDF.ashx?date=" + date;
             } else {
-                $("#reportDate").css({ "border": "1px solid red" })
+                $("#reportDateInput").css({ "border": "1px solid red" })
             }
 
         })
         var todaydate = new Date(Date.now())
-        $("#reportDate").attr("max", todaydate.toISOString().substring(0, 10));
-        $("#backToHome").click(function () {
+        $("#reportDateInput").attr("max", todaydate.toISOString().substring(0, 10));
+        $("#backToHomeBtn").click(function () {
             window.location.href = "NewsPage.aspx"
         })
     }

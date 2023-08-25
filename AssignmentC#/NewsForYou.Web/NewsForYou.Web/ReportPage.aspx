@@ -17,8 +17,8 @@
      
 
         <div class="generate-report-div">
-            <button type="button" id="backToHome" class="backhome-btn"><i class="fa fa-angle-double-left"></i></button>
-            <input type="date" id="reportDate" placeholder="Select Date" class="date-input"/>
+            <button type="button" id="backToHomeBtn" class="backhome-btn"><i class="fa fa-angle-double-left"></i></button>
+            <input type="date" id="reportDateInput" placeholder="Select Date" class="date-input"/>
             <button type="button" class="generate-report-btn" id="generateReportBtn">Generate Report</button>
             <button type="button" id="downloadReportBtn" class="download-pdf-btn">Download</button>
 

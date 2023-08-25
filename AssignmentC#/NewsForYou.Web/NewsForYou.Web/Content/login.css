@@ -5,6 +5,9 @@
     margin: 0px;
     padding: 0px;
 }
+button{
+    cursor:pointer;
+}
 .login-page {
     display: flex;
     flex-direction: row;

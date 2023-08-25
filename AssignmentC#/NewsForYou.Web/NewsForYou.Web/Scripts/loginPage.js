@@ -41,7 +41,6 @@ $(document).ready(function () {
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
                 success: function (response) {
-                    console.log(user[index]);
                     window.location.href = "NewsPage.aspx" ;
                 },
                 Error: function (response) {

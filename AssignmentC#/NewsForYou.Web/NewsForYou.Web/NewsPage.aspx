@@ -19,7 +19,7 @@
      <nb:Nav runat="server" ID="nav"  clientIdMode="Static"  />
   <div><img src="https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif?cid=ecf05e47kp7wnvclj2dezfuf013iffibbq36t6fbgrwhw9sd&ep=v1_gifs_search&rid=giphy.gif&ct=g" class="loading-gif" /></div>
     <div id="refreshpageAlertbox" class="refreshpage-alertbox">
-        <div><button class="cross-btn" id="crossButtonForAlertbox"><i class="fa fa-close"></i></button></div>
+        <div><button class="cross-btn" id="crossBtnForAlertbox"><i class="fa fa-close"></i></button></div>
         <div id="newMessages"></div>
         
     </div>
