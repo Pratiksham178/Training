@@ -52,7 +52,8 @@ namespace NewsForYou.Web
                         pdf.Close();
                         context.Response.OutputStream.Write(ms.GetBuffer(), 0, ms.GetBuffer().Length);
                         context.Response.ContentType = "application/pdf";
-                        context.Response.AddHeader("Content-Disposition", "attachment;filename=NewsReport" + date + ".pdf"); context.Response.BinaryWrite(bytesInStream);
+                        context.Response.AddHeader("Content-Disposition", "attachment;filename=NewsReport" + date + ".pdf"); 
+                        context.Response.BinaryWrite(bytesInStream);
                     }
                 }
 

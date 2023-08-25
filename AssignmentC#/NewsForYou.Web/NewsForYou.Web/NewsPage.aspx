@@ -37,7 +37,6 @@
 
     </div>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="<%=NewsForYou.Util.Utilities.UpdateFileName("/Scripts/navBar.js")%>" type="text/javascript"></script>
     <script src="<%=NewsForYou.Util.Utilities.UpdateFileName("/Scripts/newsPage.js")%>" type="text/javascript"></script>
 </body>
 </html>
