@@ -29,6 +29,7 @@ namespace NewsForYou.Util
                 }
                 string logFile = ConfigurationManager.AppSettings.Get("pathLogFolder") + "\\" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt";
                 string message = "------------------------------------------------------------------------------------\n";
+                message += DateTime.Now;
                 message += "Error - \n";
                 message += exception;
                 File.AppendAllText(logFile, message + "\n\n");
@@ -46,14 +47,14 @@ namespace NewsForYou.Util
         /// </summary>
         /// <param name="filename"></param>
         /// <returns>new filename</returns>
-        public static string UpdateFileName(string filename)
+        public static string UpdateFileName(string fileName)
         {
             try
             {
-                string filePath = HttpContext.Current.Server.MapPath(filename);
+                string filePath = HttpContext.Current.Server.MapPath(fileName);
                 FileInfo file = new FileInfo(filePath);
-                string newfilename = filename.Split('.')[0] + "-" + file.LastAccessTime.ToString("ddMMyyyyHHmmss") + "-mycustomfile." + filename.Split('.')[1];
-                return newfilename;
+                string newFileName = fileName.Split('.')[0] + "-" + file.LastAccessTime.ToString("ddMMyyyyHHmmss") + "-mycustomfile." + fileName.Split('.')[1];
+                return newFileName;
             }catch(Exception ex)
             {
                 WriteLog(ex);

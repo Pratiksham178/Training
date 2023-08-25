@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="<%=NewsForYou.Util.Utilities.UpdateFileName("/content/login.css")%>" />
-    <title>Login</title>
+    <title>Login-NewsForYou</title>
 </head>
 <body>
         <div class="login-page">

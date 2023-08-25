@@ -14,8 +14,8 @@ namespace NewsForYou.Util
         public void ProcessRequest(System.Web.HttpContext context)
         {
             string[] path = context.Request.Path.Split('-');
-            string filename = path[0] +"."+ path[path.Length - 1].Split('.')[1];
-            string filePath = HttpContext.Current.Server.MapPath(filename) ;
+            string fileName = path[0] +"."+ path[path.Length - 1].Split('.')[1];
+            string filePath = HttpContext.Current.Server.MapPath(fileName) ;
             FileInfo file = new FileInfo(filePath);
 
             if (file.Exists)

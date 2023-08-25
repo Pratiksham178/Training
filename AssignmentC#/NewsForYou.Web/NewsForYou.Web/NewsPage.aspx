@@ -13,7 +13,7 @@
      <link rel="stylesheet" href="<%=NewsForYou.Util.Utilities.UpdateFileName("/content/newsPage.css")%>" />
 
    
-    <title>News Page</title>
+    <title>News Page-NewsForYou</title>
 </head>
 <body>
      <nb:Nav runat="server" ID="nav"  clientIdMode="Static"  />

@@ -1,4 +1,4 @@
-﻿var eachrow = `<div class="row-body">
+﻿var eachRow = `<div class="row-body">
                 <div class="agency-name">[Agency Name]</div>
                 <div class="title">[Title]</div>
                 <div class="views">[Views]</div>
@@ -31,8 +31,8 @@ $(document).ready(function () {
         function AddRow(data) {
             $("#reportTable").append(header)
             $.each(data, function (index, value) {
-                var newrow = eachrow.replace("[Agency Name]", value["Agency"]).replace("[Title]", value["Title"]).replace("[Views]", value["NoOfClick"]);
-                $("#reportTable").append(newrow)
+                var newRow = eachRow.replace("[Agency Name]", value["Agency"]).replace("[Title]", value["Title"]).replace("[Views]", value["NoOfClick"]);
+                $("#reportTable").append(newRow)
             })
         }
 

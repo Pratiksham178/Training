@@ -41,8 +41,7 @@ namespace NewsForYou.Web
                 NewsForYou.Util.Utilities.WriteLog(ex);
             }
             return report;
-            
-            
+
         }
 
 

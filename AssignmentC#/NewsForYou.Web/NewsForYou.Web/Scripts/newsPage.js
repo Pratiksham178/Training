@@ -1,4 +1,4 @@
-﻿var eachrow = `<div class="each-news-in-slide fade" >
+﻿var eachRow = `<div class="each-news-in-slide fade" >
         <img src="[imagesrc]" class="each-image-in-slideshow" newsid="[newsId]"/>
         <div class="title">
             <div>
@@ -10,8 +10,8 @@
         <div>[Caption Text]</div>
         </div>
 </div>`
-var eachcategory = `<button class="category-btn" category-id="[catId]">[CategoryName]</button >`
-var eachnewsbox = `<div class="news-container" newsId="[newsId]">
+var eachCategory = `<button class="category-btn" category-id="[catId]">[CategoryName]</button >`
+var eachNewsBox = `<div class="news-container" newsId="[newsId]">
                         <div class="image-box" >
                             <img src="[imagesrc]" onerror="this.src='./Images/brokenimage.png'" newsId="[newsId]"/>
                         </div>
@@ -23,12 +23,12 @@ var eachnewsbox = `<div class="news-container" newsId="[newsId]">
                             <p newsId="[newsId]">[title]<p>
                         </div>
                     </div>`
-var eachbutton = `<button class="pagination-btn" pageNo="[pageno]" changePage="no">[pageno]</button>`
-let allnews = []
+var eachButton = `<button class="pagination-btn" pageNo="[pageno]" changePage="no">[pageno]</button>`
+let allNews = []
 let slideIndex = 1;
 var page = 1;
-var shownnews = [];
-var btnboxnumber = 1;
+var shownNews = [];
+var btnBoxNumber = 1;
 $(document).ready(function () {
     //alert for new news
     setInterval(() => {
@@ -39,8 +39,8 @@ $(document).ready(function () {
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
-                if (response.d > allnews.length) {
-                    $("#newMessages").empty().append(`<p class="message-alertbox">${response.d - allnews.length} new news<br>Please refresh the page to get the latest results</p>`)
+                if (response.d > allNews.length) {
+                    $("#newMessages").empty().append(`<p class="message-alertbox">${response.d - allNews.length} new news<br>Please refresh the page to get the latest results</p>`)
                     $("#refreshpageAlertbox").css({ "display": "block" })
                 }
                 if (response.d == null){
@@ -60,7 +60,7 @@ $(document).ready(function () {
     })
 
     //get all the news 
-    function getNews() {
+    function GetNews() {
         $.ajax({
             type: "POST",
             url: "NewsPage.aspx/GetAllNews",
@@ -71,7 +71,7 @@ $(document).ready(function () {
                 if (response.d == null) {
                     alert("Some error occured")
                 } else {
-                    allnews = response.d.slice();
+                    allNews = response.d.slice();
                     var news = response.d;
                     $(".loading-gif").css({ "display": "none" })
                     $(".categories-btns").css({ "display": "block" });
@@ -86,7 +86,7 @@ $(document).ready(function () {
             }
         })
     }
-    getNews()
+    GetNews()
 
     //open news on click
     function OnClickViewNews(id) {
@@ -152,42 +152,42 @@ $(document).ready(function () {
     }
     function AddNewsInBox() {  //Addnewsinto the container
         
-        if (page * 32 <= shownnews.length) {
-            var news = shownnews.slice((page - 1) * 32, page * 32);
+        if (page * 32 <= shownNews.length) {
+            var news = shownNews.slice((page - 1) * 32, page * 32);
         } else {
-            var news = shownnews.slice((page - 1) * 32, shownnews.length-1);
+            var news = shownNews.slice((page - 1) * 32, shownNews.length-1);
         }
         $("#newsBoxId").empty();
         $.each(news, function (index, value) {
-            var newsdate = new Date(parseInt(value["NewsPublishDateTime"].substring(6)));
-            var time = GetTime(Date.now() - Date.parse(newsdate)).toString();
-            var newbox = eachnewsbox.replace("[imagesrc]", value["NewsImageLink"]).replace("[title]", value["NewsTitle"]).replace("[AgencyImage]", value["AgencyImageLink"]).replace("[AgencyName]", value["AgencyName"]).replace("[hours]", time).replace("[newsId]", value["NewsId"]).replace("[newsId]", value["NewsId"]).replace("[newsId]", value["NewsId"]).replace("[newsId]", value["NewsId"]);
+            var newsDate = new Date(parseInt(value["NewsPublishDateTime"].substring(6)));
+            var time = GetTime(Date.now() - Date.parse(newsDate)).toString();
+            var newbox = eachNewsBox.replace("[imagesrc]", value["NewsImageLink"]).replace("[title]", value["NewsTitle"]).replace("[AgencyImage]", value["AgencyImageLink"]).replace("[AgencyName]", value["AgencyName"]).replace("[hours]", time).replace("[newsId]", value["NewsId"]).replace("[newsId]", value["NewsId"]).replace("[newsId]", value["NewsId"]).replace("[newsId]", value["NewsId"]);
             $("#newsBoxId").append(newbox);
         })
        
     }
     function AddPaginationButtons() {
         $("#paginationBtnsDiv").empty();
-        var totalNews = shownnews.length;
+        var totalNews = shownNews.length;
         var totalPage = Math.ceil(totalNews / 32);
         
-        if (totalPage > (btnboxnumber * 10)) {
-            if (btnboxnumber != 1) {
+        if (totalPage > (btnBoxNumber * 10)) {
+            if (btnBoxNumber != 1) {
                 $("#paginationBtnsDiv").append(`<button class="alter-pageno-btn" parseBy="-1" changePage="yes">&#10094</button>`)
 
             }
-            for (i = (btnboxnumber-1)*10 + 1; i <= btnboxnumber * 10; i++) {
-                var newbtn = eachbutton.replace("[pageno]", i).replace("[pageno]", i);
+            for (i = (btnBoxNumber-1)*10 + 1; i <= btnBoxNumber * 10; i++) {
+                var newbtn = eachButton.replace("[pageno]", i).replace("[pageno]", i);
                 $("#paginationBtnsDiv").append(newbtn)
             }
             $("#paginationBtnsDiv").append(`<button class="alter-pageno-btn" parseBy="1" changePage="yes">&#10095</button>`)
-        } else if (totalPage <= btnboxnumber*10){
-            if (btnboxnumber != 1) {
+        } else if (totalPage <= btnBoxNumber*10){
+            if (btnBoxNumber != 1) {
                 $("#paginationBtnsDiv").append(`<button class="alter-pageno-btn" parseBy="-1" changePage="yes">&#10094</button>`)
 
             }
-            for (i = (btnboxnumber - 1) * 10 +1; i <= totalPage; i++) {
-                var newbtn = eachbutton.replace("[pageno]", i).replace("[pageno]", i);
+            for (i = (btnBoxNumber - 1) * 10 +1; i <= totalPage; i++) {
+                var newbtn = eachButton.replace("[pageno]", i).replace("[pageno]", i);
                 $("#paginationBtnsDiv").append(newbtn)
             }
         }
@@ -195,7 +195,7 @@ $(document).ready(function () {
 
     $("#paginationBtnsDiv").on('click', 'button', function (e) {
         if ($(this).attr("changePage") == "yes") {
-            btnboxnumber += parseInt($(e.target).attr("parseBy"));
+            btnBoxNumber += parseInt($(e.target).attr("parseBy"));
             AddPaginationButtons();
         } else {
             $(".pagination-btn").css({ "background-color": "white", "color": "black" });
@@ -212,22 +212,22 @@ $(document).ready(function () {
     
     function AddAllNews() {
         if (document.cookie != "") {
-            var reqcategory = document.cookie.split(";")[0].split("=")[1];
+            var reqCategory = document.cookie.split(";")[0].split("=")[1];
             $("#newsBoxId").empty();
-            if (reqcategory != "") {
-                var listofcategory = reqcategory.split(",");
-                var allrequirednews = allnews.filter(function (item) {
-                    return listofcategory.includes(item["CategoryId"].toString())
+            if (reqCategory != "") {
+                var listOfCategory = reqCategory.split(",");
+                var allRequiredNews = allNews.filter(function (item) {
+                    return listOfCategory.includes(item["CategoryId"].toString())
                 });
-                shownnews = allrequirednews
+                shownNews = allRequiredNews
 
             } else {
-                shownnews = allnews;
+                shownNews = allNews;
             }
         } else {
-            shownnews = allnews;
+            shownNews = allNews;
         }
-        btnboxnumber = 1;
+        btnBoxNumber = 1;
         AddPaginationButtons();
         AddNewsInBox();
         
@@ -239,14 +239,14 @@ $(document).ready(function () {
         if (document.cookie != "") {
             var categoriesRequired = document.cookie.split(";")[0].split("=")[1];
             if (categoriesRequired != "") {
-                var listofcategory = categoriesRequired.split(",");
-                if (!listofcategory.includes(id)) {
+                var listOfCategory = categoriesRequired.split(",");
+                if (!listOfCategory.includes(id)) {
                     document.cookie = "categoryId=" + categoriesRequired + "," + id + ";expires=Fri, 31 Dec 9999 21:10:10 GMT";
                     $(this).css({ "background-color": "black", "color": "white", "border-right": "1px solid white" })
                 } else {
-                    var index = listofcategory.indexOf(id)
-                    listofcategory.splice(index, 1);
-                    document.cookie = "categoryId=" + listofcategory.toString() + ";expires=Fri, 31 Dec 9999 21:10:10 GMT"
+                    var index = listOfCategory.indexOf(id)
+                    listOfCategory.splice(index, 1);
+                    document.cookie = "categoryId=" + listOfCategory.toString() + ";expires=Fri, 31 Dec 9999 21:10:10 GMT"
                     $(this).css({ "background-color": "white", "color": "black", "border-right": "1px solid black" });
                 }
 
@@ -260,7 +260,7 @@ $(document).ready(function () {
             document.cookie = "categoryId=" + id;
         }
 
-        btnboxnumber = 1;
+        btnBoxNumber = 1;
         page = 1;
         AddAllNews();
         
@@ -270,7 +270,7 @@ $(document).ready(function () {
 
     $.ajax({
         type: "POST",
-        url: "NewsPage.aspx/GetAllCategories",
+        url: "NewsPage.aspx/GetallCategories",
         data: "",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
@@ -286,22 +286,22 @@ $(document).ready(function () {
         }
     })
     function AddCategory(data) {
-        var listofcategory=[]
+        var listOfCategory=[]
         if(document.cookie != "") {
             var categoriesRequired = document.cookie.split(";")[0].split("=")[1];
             if (categoriesRequired != "") {
-                listofcategory = categoriesRequired.split(",");
+                listOfCategory = categoriesRequired.split(",");
             }
         }
         $.each(data, function (index, value) {
             
-            var newcat = eachcategory.replace("[catId]", value["CategoryId"]).replace("[CategoryName]", value["CategoryName"])
-            $("#categories").append(newcat);
+            var newCategory = eachCategory.replace("[catId]", value["CategoryId"]).replace("[CategoryName]", value["CategoryName"])
+            $("#categories").append(newCategory);
             
         })
-        var allcategories = $(".category-btn");
-        $.each(allcategories, function (index, value) {
-            if (listofcategory.includes($(value).attr("category-id"))) {
+        var allCategories = $(".category-btn");
+        $.each(allCategories, function (index, value) {
+            if (listOfCategory.includes($(value).attr("category-id"))) {
                 $(value).css({ "background-color": "black", "color": "white", "border-right": "1px solid white" });
             }
         })
@@ -321,8 +321,8 @@ $(document).ready(function () {
     function AddSlideShow(data) {
         var slideShowData = data.sort(Compare).slice(0, 5);
         $.each(slideShowData, function (index, value) {
-            var addnewslide = eachrow.replace("[newsId]", value["NewsId"]).replace("[imagesrc]", value["NewsImageLink"]).replace("[Caption Text]", value["NewsTitle"]).replace("[AgencyImage]", value["AgencyImageLink"]).replace("[ClickCount]", value["ClickCount"]).replace("[AgencyName]", value["AgencyName"])
-            $("#slideShowNews").append(addnewslide);
+            var addNewSlide = eachRow.replace("[newsId]", value["NewsId"]).replace("[imagesrc]", value["NewsImageLink"]).replace("[Caption Text]", value["NewsTitle"]).replace("[AgencyImage]", value["AgencyImageLink"]).replace("[ClickCount]", value["ClickCount"]).replace("[AgencyName]", value["AgencyName"])
+            $("#slideShowNews").append(addNewSlide);
         })
         $("#slideShowNews").append(`<a class="prev" parseBy="-1">&#10094;</a>
                         <a class="next" parseBy="1">&#10095;</a>`);

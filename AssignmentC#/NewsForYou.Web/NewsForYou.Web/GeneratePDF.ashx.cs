@@ -25,9 +25,9 @@ namespace NewsForYou.Web
             try
             {
                 string date = context.Request.Params["date"];
-                var allreports = BusinessClass.GetReport(date);
+                var allReports = BusinessClass.GetReport(date);
 
-                if (allreports.Count() > 0)
+                if (allReports.Count() > 0)
                 {
                     using (MemoryStream ms = new MemoryStream())
                     {
@@ -38,7 +38,7 @@ namespace NewsForYou.Web
                         table.AddCell("Agency Name");
                         table.AddCell("Title");
                         table.AddCell("Views");
-                        foreach (var report in allreports)
+                        foreach (var report in allReports)
                         {
                             table.AddCell(report.Agency);
                             table.AddCell(report.Title);

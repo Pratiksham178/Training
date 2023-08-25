@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using NewsForYou.DAL;
 using NewsForYou.Models;
+using NewsForYou.Util;
 
 namespace NewsForYou.Business
 {
@@ -17,18 +18,18 @@ namespace NewsForYou.Business
         /// </summary>
         public static void AddDataToDB()
         {
-            List<AgencyFeedDetails> Feedlist = DBAccess.GetAllFeedData();
-            List<NewsDetail> NewsInfo = new List<NewsDetail>();
-            foreach (var Feed in Feedlist)
+            List<AgencyFeedDetails> feedList = DBAccess.GetAllFeedData();
+            List<NewsDetail> newsInfo = new List<NewsDetail>();
+            foreach (var feed in feedList)
             {
-                string url = Feed.AgencyFeedURL.ToString();
+                string url = feed.AgencyFeedURL.ToString();
                 try
                 {
                     XDocument xDoc = new XDocument();
                     xDoc = XDocument.Load(url);
-                    if(Feed.AgencyId == 1)
+                    if(feed.AgencyId == 1)
                     {
-                         var eachfeed = (from x in xDoc.Descendants("item")
+                         var eachFeed = (from x in xDoc.Descendants("item")
                                         select new
                                         {
                                             NewsTitle = x.Element("title").Value,
@@ -37,9 +38,9 @@ namespace NewsForYou.Business
                                             NewsDescription = x.Element("description").Value,
                                             NewsimageLink = x.Element("enclosure").Attribute("url").Value.ToString(),
                                         }).ToList();
-                        if (eachfeed != null)
+                        if (eachFeed != null)
                         {
-                            foreach (var item in eachfeed)
+                            foreach (var item in eachFeed)
                             {
                                 string description = item.NewsDescription;
                                 string cleaned = Regex.Replace(description, @"<[^>]*>", String.Empty, RegexOptions.IgnoreCase).Trim();
@@ -48,20 +49,18 @@ namespace NewsForYou.Business
                                 news.NewsLink = item.NewsLink;
                                 news.NewsPublishDateTime = item.NewsPublishDateTime;
                                 news.NewsDescription = cleaned;
-                                news.AgencyId = Feed.AgencyId;
-                                news.CategoryId = Feed.CategoryId;
+                                news.AgencyId = feed.AgencyId;
+                                news.CategoryId = feed.CategoryId;
                                 news.ClickCount = 0;
                                 news.NewsImageLink = item.NewsimageLink;
-                                NewsInfo.Add(news);
+                                newsInfo.Add(news);
                             }
 
                         }
                     }
                     else { 
-                        try
-                        {
                             XNamespace mediaNamespace = "http://search.yahoo.com/mrss/";
-                            var eachfeed = (from x in xDoc.Descendants("item")
+                            var eachFeed = (from x in xDoc.Descendants("item")
                                             select new
                                             {
                                                 NewsTitle = x.Element("title").Value,
@@ -71,9 +70,9 @@ namespace NewsForYou.Business
                                                 NewsImageLink = x.Element(mediaNamespace + "content")
 
                                             }).ToList();
-                            if (eachfeed != null)
+                            if (eachFeed != null)
                             {
-                                foreach (var item in eachfeed)
+                                foreach (var item in eachFeed)
                                 {
                                     string description = item.NewsDescription;
                                     string cleaned = Regex.Replace(description, @"<[^>]*>", String.Empty, RegexOptions.IgnoreCase).Trim();
@@ -83,29 +82,26 @@ namespace NewsForYou.Business
                                     news.NewsLink = item.NewsLink;
                                     news.NewsPublishDateTime = item.NewsPublishDateTime;
                                     news.NewsDescription = cleaned;
-                                    news.AgencyId = Feed.AgencyId;
-                                    news.CategoryId = Feed.CategoryId;
+                                    news.AgencyId = feed.AgencyId;
+                                    news.CategoryId = feed.CategoryId;
                                     news.ClickCount = 0;
                                     if (item.NewsImageLink != null && item.NewsImageLink.Attribute("url").Value != null)
                                     {
                                         news.NewsImageLink = item.NewsImageLink.Attribute("url").Value;
                                     }
-                                    NewsInfo.Add(news);
+                                    newsInfo.Add(news);
                                 }
 
                             }
-                        }catch (Exception ex)
-                        {
-
-                        }
+                       
                     }
                 }
                 catch (Exception ex)
                 {
-
+                    NewsForYou.Util.Utilities.WriteLog(ex);    
                 }
             }
-            DBAccess.StoreAllDataInNews(NewsInfo);
+            DBAccess.StoreAllDataInNews(newsInfo);
         }
 
         /// <summary>

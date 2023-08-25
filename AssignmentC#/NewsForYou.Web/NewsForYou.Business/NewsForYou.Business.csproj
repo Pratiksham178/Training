@@ -53,6 +53,10 @@
       <Project>{5828caef-fee6-4526-9672-12b5cba14b85}</Project>
       <Name>NewsForYou.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\NewsForYou.Util\NewsForYou.Util.csproj">
+      <Project>{1f3e62f5-4f88-4c15-913d-7cf9cfe792b9}</Project>
+      <Name>NewsForYou.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
